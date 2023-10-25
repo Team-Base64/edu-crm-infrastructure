@@ -17,6 +17,6 @@ jobs:
           SOURCE: "docker-compose.yaml"
           TARGET: ${{ secrets.TARGET_DOCKER_COMPOSE }}
           SCRIPT_AFTER: |
-            docker compose down
+            # docker compose down
             docker compose up -d
-            docker system prune -af --volumes
+            # docker system prune -af --volumes
