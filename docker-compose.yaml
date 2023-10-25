@@ -1,4 +1,6 @@
 services:
   test:
-    image: hello-world:latest
-    container_name: hello
+    image: qmcgaw/port-checker
+    container_name: test
+    ports:
+      - 1234:8000
