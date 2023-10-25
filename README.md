@@ -1,5 +1,5 @@
 # edu-crm-infrastructure
-[![Deploy NGINX](https://github.com/Team-Base64/edu-crm-infrastructure/actions/workflows/cd.yml/badge.svg?branch=nginx-0.1)](https://github.com/Team-Base64/edu-crm-infrastructure/actions/workflows/cd.yml)
+[![Deploy NGINX](https://github.com/Team-Base64/edu-crm-infrastructure/actions/workflows/nginx-deploy.yaml/badge.svg?branch=nginx-0.1)](https://github.com/Team-Base64/edu-crm-infrastructure/actions/workflows/nginx-deploy.yaml) [![Deploy Docker Compose](https://github.com/Team-Base64/edu-crm-infrastructure/actions/workflows/docker-compose-deploy.yaml/badge.svg?branch=docker-compose-0.1)](https://github.com/Team-Base64/edu-crm-infrastructure/actions/workflows/docker-compose-deploy.yaml)
 
 Contain and deploy configs
 ## Configs
