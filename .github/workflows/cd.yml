@@ -13,7 +13,7 @@ jobs:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_KEY }}
           ARGS: "-rlza --delete"
           REMOTE_HOST: ${{ secrets.HOST }}
-          REMOTE_USER: ${{ secrets.USER }}
+          REMOTE_USER: ${{ secrets.USERNAME }}
           SOURCE: "educrm.us.to.conf"
           TARGET: ${{ secrets.REMOTE_TARGET }}
           SCRIPT_AFTER: |
