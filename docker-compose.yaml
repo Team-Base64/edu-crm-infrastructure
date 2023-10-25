@@ -3,4 +3,4 @@ services:
     image: qmcgaw/port-checker
     container_name: test
     ports:
-      - 1234:8000
+      - 2566:8000
