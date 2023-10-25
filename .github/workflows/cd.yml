@@ -11,12 +11,13 @@ jobs:
       - uses: easingthemes/ssh-deploy@main
         with:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_KEY }}
-          ARGS: "-rlza --delete"
+          ARGS: "-rlzav --delete"
           REMOTE_HOST: ${{ secrets.HOST }}
           REMOTE_USER: ${{ secrets.USERNAME }}
           SOURCE: "docker-compose.yaml"
           TARGET: ${{ secrets.TARGET_DOCKER_COMPOSE }}
           SCRIPT_AFTER: |
-            # docker compose down
+            cd ${{ secrets.TARGET_DOCKER_COMPOSE }}
+            docker compose down
             docker compose up -d
-            # docker system prune -af --volumes
+            docker system prune -af --volumes
