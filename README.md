@@ -1,4 +1,6 @@
 # edu-crm-infrastructure
+[![Deploy NGINX](https://github.com/Team-Base64/edu-crm-infrastructure/actions/workflows/cd.yml/badge.svg?branch=nginx-0.1)](https://github.com/Team-Base64/edu-crm-infrastructure/actions/workflows/cd.yml)
+
 Contain and deploy configs
 ## Configs
 - [Nginx](https://github.com/Team-Base64/edu-crm-infrastructure/tree/nginx-0.1)
