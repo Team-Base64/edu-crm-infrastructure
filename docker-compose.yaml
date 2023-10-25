@@ -1,0 +1,4 @@
+services:
+  test:
+    image: hello-world:latest
+    container_name: hello
