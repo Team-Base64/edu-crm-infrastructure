@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Down docker compose
+      - name: Clear
         uses: appleboy/ssh-action@v1.0.0
         with:
           host: ${{ secrets.HOST }}
@@ -19,6 +19,7 @@ jobs:
           script: |
             cd ${{ secrets.TARGET_DOCKER_COMPOSE }}
             docker compose down
+            sudo rm -rf postgres-data
       - name: Deploy file
         uses: easingthemes/ssh-deploy@main
         with:
