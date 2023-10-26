@@ -8,7 +8,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: easingthemes/ssh-deploy@main
+      - name: Down docker compose
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSH_KEY }}
+          port: ${{ secrets.PORT }}
+          script_stop: true
+          script: |
+            cd ${{ secrets.TARGET_DOCKER_COMPOSE }}
+            docker compose down
+      - name: Deploy file
+        uses: easingthemes/ssh-deploy@main
         with:
           REMOTE_HOST: ${{ secrets.HOST }}
           REMOTE_USER: ${{ secrets.USERNAME }}
@@ -16,10 +28,8 @@ jobs:
           ARGS: "-rlzav --delete"
           SOURCE: "docker-compose.yaml"
           TARGET: ${{ secrets.TARGET_DOCKER_COMPOSE }}
-          SCRIPT_BEFORE: |
-            cd ${{ secrets.TARGET_DOCKER_COMPOSE }}
-            docker compose down
-      - uses: appleboy/ssh-action@v1.0.0
+      - name: Restart docker compose
+        uses: appleboy/ssh-action@v1.0.0
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
