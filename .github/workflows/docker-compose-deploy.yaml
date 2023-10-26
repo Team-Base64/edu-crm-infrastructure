@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: easingthemes/ssh-deploy@main
+      - uses: easingthemes/ssh-deploy@v4.1.10
         with:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_KEY }}
           ARGS: "-rlzav --delete"
