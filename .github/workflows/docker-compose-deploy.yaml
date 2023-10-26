@@ -16,6 +16,9 @@ jobs:
           ARGS: "-rlzav --delete"
           SOURCE: "docker-compose.yaml"
           TARGET: ${{ secrets.TARGET_DOCKER_COMPOSE }}
+          SCRIPT_BEFORE: |
+            cd ${{ secrets.TARGET_DOCKER_COMPOSE }}
+            docker compose down
       - uses: appleboy/ssh-action@v1.0.0
         with:
           host: ${{ secrets.HOST }}
@@ -25,6 +28,5 @@ jobs:
           script_stop: true
           script: |
             cd ${{ secrets.TARGET_DOCKER_COMPOSE }}
-            docker compose down
             docker compose up -d
             docker system prune -af --volumes
