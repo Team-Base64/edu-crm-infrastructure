@@ -25,6 +25,6 @@ jobs:
           script_stop: true
           script: |
             cd ${{ secrets.TARGET_DOCKER_COMPOSE }}
-            echo ${{ secrets.POSTGRES_ENV }} > ./.postgres-env
+            echo "${{ secrets.POSTGRES_ENV }}" > ./.postgres-env
             docker compose up -d --no-deps --force-recreate --build postgres
             docker system prune -af --volumes
