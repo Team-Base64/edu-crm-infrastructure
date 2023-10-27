@@ -13,6 +13,10 @@ on:
           - disable
           - restart
 
+env:
+  DELETE_FILES: "postgres-data"
+  SERVICE: "nginx"
+
 jobs:
   server:
     runs-on: ubuntu-latest
@@ -38,7 +42,7 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           script_stop: true
           script: |
-            sudo systemctl stop nginx
+            sudo systemctl stop ${{ env.SERVICE }}
             cd ${{ secrets.TARGET_DOCKER_COMPOSE }}
             docker compose stop
       - name: Restart
@@ -50,9 +54,9 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           script_stop: true
           script: |
-            sudo systemctl restart nginx
+            sudo systemctl restart ${{ env.SERVICE }}
             cd ${{ secrets.TARGET_DOCKER_COMPOSE }}
             docker compose down --volume
-            sudo rm -rf postgres-data
+            sudo rm -rf ${{ env.DELETE_FILES }}
             docker compose up -d
             docker system prune -af --volumes
