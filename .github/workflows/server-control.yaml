@@ -41,7 +41,7 @@ jobs:
             sudo systemctl stop nginx
             cd ${{ secrets.TARGET_DOCKER_COMPOSE }}
             docker compose stop
-      - name: Resrart
+      - name: Restart
         if: ${{inputs.cmd_type == 'restart'}}
         uses: appleboy/ssh-action@v1.0.0
         with:
