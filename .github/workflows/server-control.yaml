@@ -1,0 +1,58 @@
+name: Server Control
+
+on:
+  workflow_dispatch:
+    inputs:
+      cmd_type:
+        type: choice
+        description: 'What do you need to do?'
+        required: true
+        default: 'disable'
+        options:
+          - enable
+          - disable
+          - restart
+
+jobs:
+  server:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Enable
+        if: ${{inputs.cmd_type == 'enable'}}
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSH_KEY }}
+          script_stop: true
+          script: |
+            sudo systemctl start nginx
+            cd ${{ secrets.TARGET_DOCKER_COMPOSE }}
+            docker compose start
+      - name: Disable
+        if: ${{inputs.cmd_type == 'disable'}}
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSH_KEY }}
+          script_stop: true
+          script: |
+            sudo systemctl stop nginx
+            cd ${{ secrets.TARGET_DOCKER_COMPOSE }}
+            docker compose stop
+      - name: Resrart
+        if: ${{inputs.cmd_type == 'restart'}}
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSH_KEY }}
+          script_stop: true
+          script: |
+            sudo systemctl restart nginx
+            cd ${{ secrets.TARGET_DOCKER_COMPOSE }}
+            docker compose down --volume
+            sudo rm -rf postgres-data
+            docker compose up -d
+            docker system prune -af --volumes
