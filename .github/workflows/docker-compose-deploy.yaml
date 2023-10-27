@@ -2,6 +2,10 @@ name: Deploy Docker Compose
 
 on: push
 
+env:
+  DEPLOY_SRC: "docker-compose.yaml"
+  DELETE_FILES: "postgres-data"
+
 jobs:
   deploy:
     if: contains(github.event.head_commit.message, '[DEPLOY]')
@@ -18,7 +22,7 @@ jobs:
           script: |
             cd ${{ secrets.TARGET_DOCKER_COMPOSE }}
             docker compose down
-            sudo rm -rf postgres-data
+            sudo rm -rf ${{ env.DELETE_FILES }}
       - name: Deploy file
         uses: easingthemes/ssh-deploy@main
         with:
@@ -26,7 +30,7 @@ jobs:
           REMOTE_USER: ${{ secrets.USERNAME }}
           SSH_PRIVATE_KEY: ${{ secrets.SSH_KEY }}
           ARGS: "-rlzav --delete"
-          SOURCE: "docker-compose.yaml"
+          SOURCE: ${{ env.DEPLOY_SRC }}
           TARGET: ${{ secrets.TARGET_DOCKER_COMPOSE }}
       - name: Restart docker compose
         uses: appleboy/ssh-action@v1.0.0

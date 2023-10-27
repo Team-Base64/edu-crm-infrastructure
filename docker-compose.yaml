@@ -14,3 +14,11 @@ services:
       timeout: 1s
       retries: 5
     restart: unless-stopped
+  backend:
+    container_name: backend
+    hostname: backend
+    image: ghcr.io/team-base64/edu-crm-backend-app:latest
+    depends_on:
+      - postgres
+    env_file:
+      - ./.backend-env
