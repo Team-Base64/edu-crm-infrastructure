@@ -3,7 +3,7 @@ name: Deploy NGINX
 on: push
 
 env:
-  DEPLOY_SRC: "snippets site_available"
+  DEPLOY_SRC: "snippets sites-available"
   SERVICE: "nginx"
 
 jobs:
