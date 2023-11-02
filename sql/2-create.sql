@@ -27,3 +27,12 @@ CREATE TABLE messages
     time TIMESTAMP NOT NULL,
     isRead BOOLEAN NOT NULL DEFAULT FALSE
 );
+
+CREATE TABLE classes
+(
+    id SERIAL PRIMARY KEY,
+    teacherID INT REFERENCES teachers(id) ON DELETE CASCADE,
+    title VARCHAR (100) NOT NULL,
+    description TEXT,
+    inviteToken CHAR (10) NOT NULL
+);
