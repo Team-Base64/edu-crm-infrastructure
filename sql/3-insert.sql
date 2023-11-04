@@ -1,13 +1,13 @@
 INSERT INTO teachers (login, name, password) VALUES
 ('art@art',	'aaa', '123');
 
-INSERT INTO students (inviteHash, name) VALUES
-('d0e8d5bc-6de7-11ee-b962-0242ac120002', 'bbb'),
-('d0e8d5bc-6de7-11ee-b962-0242ac120003', 'bbb2');
+INSERT INTO students (name) VALUES
+('bbb'),
+('bbb2');
 
-INSERT INTO chats (teacherID, studentHash) VALUES
-(1, 'd0e8d5bc-6de7-11ee-b962-0242ac120002'),
-(1, 'd0e8d5bc-6de7-11ee-b962-0242ac120003');
+INSERT INTO chats (teacherID, studentID) VALUES
+(1, 1),
+(1, 2);
 
 INSERT INTO messages (chatID, text, isAuthorTeacher, time, isRead) VALUES
 (1, 'mes1', true, '2017-03-17 19:43:35.178882-07', true),
