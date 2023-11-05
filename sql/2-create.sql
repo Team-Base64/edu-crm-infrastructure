@@ -50,3 +50,33 @@ CREATE TABLE
         studentID INT REFERENCES students (id) ON DELETE CASCADE,
         UNIQUE (classID, studentID)
     );
+
+CREATE TABLE
+    posts (
+        id SERIAL PRIMARY KEY,
+        classID INT REFERENCES classes (id) ON DELETE CASCADE,
+        text TEXT,
+        attaches VARCHAR[],
+        time TIMESTAMP NOT NULL
+    );
+
+CREATE TABLE
+    homeworks (
+        id SERIAL PRIMARY KEY,
+        classID INT REFERENCES classes (id) ON DELETE CASCADE,
+        title VARCHAR(100) NOT NULL,
+        description TEXT,
+        createTime TIMESTAMP NOT NULL,
+        deadlineTime TIMESTAMP NOT NULL,
+        file VARCHAR(100)
+    );
+
+CREATE TABLE
+    solutions (
+        id SERIAL PRIMARY KEY,
+        hwID INT REFERENCES homeworks (id) ON DELETE CASCADE,
+        studentID INT REFERENCES students (id) ON DELETE CASCADE,
+        text TEXT,
+        time TIMESTAMP NOT NULL,
+        file VARCHAR(100)
+    );

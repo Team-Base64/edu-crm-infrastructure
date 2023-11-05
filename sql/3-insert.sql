@@ -59,3 +59,85 @@ VALUES
   (1, 1),
   (2, 1),
   (2, 2);
+
+INSERT INTO
+  posts (classID, text, attaches, time)
+VALUES
+  (
+    1,
+    'Texttexttext texttext',
+    '{"/qwe/qwe", "/ewq/ewq"}',
+    '2020-03-17 19:22:01.178882-07'
+  ),
+  (
+    2,
+    'OJNSdnd dofnwoe',
+    '{"/qwe/qwe"}',
+    '2020-03-17 19:22:01.178882-07'
+  ),
+  (
+    2,
+    'OJNSdnd dofnwoe',
+    '{}',
+    '2020-03-17 19:22:01.178882-07'
+  );
+
+INSERT INTO
+  homeworks (
+    classID,
+    title,
+    description,
+    createTime,
+    deadlineTime,
+    file
+  )
+VALUES
+  (
+    1,
+    'Texttexttext texttext',
+    'Texttexttext texttext Texttexttext texttext',
+    '2020-03-17 19:22:01.178882-07',
+    '2020-03-18 19:22:01.178882-07',
+    '/qwe/qwe/qwe'
+  ),
+  (
+    2,
+    'OJNSdnd dofnwoe',
+    'OJNSdnd dofnwoe OJNSdnd dofnwoe',
+    '2020-03-17 19:22:01.178882-07',
+    '2020-04-17 19:22:01.178882-07',
+    '/ewq/ewq/ewq'
+  ),
+  (
+    2,
+    'Sddwcsd dscwefwe',
+    'Sddwcsd dscwefweSddwcsd dscwefwe',
+    '2020-03-17 19:22:01.178882-07',
+    '2021-04-17 19:22:01.178882-07',
+    '/ewq/ewq/vfe'
+  );
+
+INSERT INTO
+  solutions (hwID, studentID, text, time, file)
+VALUES
+  (
+    1,
+    1,
+    'cwefwesdef efdwefwe',
+    '2020-03-17 19:40:01.178882-07',
+    '/qwe/qwe/fvfd'
+  ),
+  (
+    2,
+    1,
+    'wefdsfewfew',
+    '2020-05-17 19:22:01.178882-07',
+    '/qwe/we'
+  ),
+  (
+    3,
+    2,
+    'egvdrgregergf',
+    '2020-05-17 19:50:01.178882-07',
+    '/qwe/weffff'
+  );
