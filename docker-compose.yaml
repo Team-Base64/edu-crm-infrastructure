@@ -9,17 +9,22 @@ services:
       - ./sql:/docker-entrypoint-initdb.d
       - ./postgres-data:/var/lib/postgresql/data
     healthcheck:
-      test: [ "CMD-SHELL", "pg_isready -U educrm -d educrm" ]
-      interval: 2s
-      timeout: 1s
-      retries: 5
+      test:
+        [
+          "CMD-SHELL",
+          "pg_isready -h postgres -U educrm -d educrm"
+        ]
+      interval: 5s
+      timeout: 2s
+      retries: 10
     restart: unless-stopped
   backend:
     container_name: backend
     hostname: backend
     image: ghcr.io/team-base64/edu-crm-backend-app:latest
     depends_on:
-      - postgres
+      postgres:
+        condition: service_healthy
     env_file:
       - ./.backend-env
     ports:
