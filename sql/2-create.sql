@@ -30,8 +30,7 @@ CREATE TABLE
         teacherID INT REFERENCES teachers (id) ON DELETE CASCADE,
         studentID INT REFERENCES students (id) ON DELETE CASCADE,
         classID INT REFERENCES classes (id) ON DELETE CASCADE,
-        UNIQUE (teacherID, studentID),
-        UNIQUE (studentID, classID)
+        UNIQUE (teacherID, studentID, classID),
     );
 
 CREATE TABLE
