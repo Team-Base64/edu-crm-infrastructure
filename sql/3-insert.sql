@@ -16,7 +16,7 @@ VALUES
   (1, 2);
 
 INSERT INTO
-  messages (chatID, text, isAuthorTeacher, time, isRead)
+  messages (chatID, text, isAuthorTeacher, createTime, isRead)
 VALUES
   (
     1,
@@ -61,7 +61,7 @@ VALUES
   (2, 2);
 
 INSERT INTO
-  posts (classID, text, attaches, time)
+  posts (classID, text, attaches, createTime)
 VALUES
   (
     1,
@@ -118,7 +118,7 @@ VALUES
   );
 
 INSERT INTO
-  solutions (hwID, studentID, text, time, file)
+  solutions (hwID, studentID, text, createTime, file)
 VALUES
   (
     1,

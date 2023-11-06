@@ -16,13 +16,22 @@ CREATE TABLE
     );
 
 CREATE TABLE
+    classes (
+        id SERIAL PRIMARY KEY,
+        teacherID INT REFERENCES teachers (id) ON DELETE CASCADE,
+        title VARCHAR(100) NOT NULL,
+        description TEXT,
+        inviteToken CHAR(10) UNIQUE NOT NULL
+    );
+
+CREATE TABLE
     chats (
         id SERIAL PRIMARY KEY,
         teacherID INT REFERENCES teachers (id) ON DELETE CASCADE,
         studentID INT REFERENCES students (id) ON DELETE CASCADE,
         classID INT REFERENCES classes (id) ON DELETE CASCADE,
         UNIQUE (teacherID, studentID),
-        UNIQUE (studentID, chatID)
+        UNIQUE (studentID, classID)
     );
 
 CREATE TABLE
@@ -32,17 +41,8 @@ CREATE TABLE
         text TEXT NOT NULL,
         isAuthorTeacher BOOLEAN NOT NULL,
         attaches VARCHAR[] NOT NULL DEFAULT ARRAY[]::VARCHAR[],
-        time TIMESTAMP NOT NULL,
+        createTime TIMESTAMP NOT NULL,
         isRead BOOLEAN NOT NULL DEFAULT FALSE
-    );
-
-CREATE TABLE
-    classes (
-        id SERIAL PRIMARY KEY,
-        teacherID INT REFERENCES teachers (id) ON DELETE CASCADE,
-        title VARCHAR(100) NOT NULL,
-        description TEXT,
-        inviteToken CHAR(10) UNIQUE NOT NULL
     );
 
 CREATE TABLE
@@ -59,7 +59,7 @@ CREATE TABLE
         classID INT REFERENCES classes (id) ON DELETE CASCADE,
         text TEXT,
         attaches VARCHAR[] NOT NULL DEFAULT ARRAY[]::VARCHAR[],
-        time TIMESTAMP NOT NULL
+        createTime TIMESTAMP NOT NULL
     );
 
 CREATE TABLE
@@ -79,6 +79,6 @@ CREATE TABLE
         hwID INT REFERENCES homeworks (id) ON DELETE CASCADE,
         studentID INT REFERENCES students (id) ON DELETE CASCADE,
         text TEXT,
-        time TIMESTAMP NOT NULL,
+        createTime TIMESTAMP NOT NULL,
         file VARCHAR(100)
     );
