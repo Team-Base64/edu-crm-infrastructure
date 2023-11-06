@@ -56,7 +56,7 @@ jobs:
           script: |
             sudo systemctl restart ${{ env.SERVICE }}
             cd ${{ secrets.TARGET_DOCKER_COMPOSE }}
-            docker compose down --volume
+            docker compose down --rmi all
             sudo rm -rf ${{ env.DELETE_FILES }}
             docker compose up -d
             docker system prune -af --volumes
