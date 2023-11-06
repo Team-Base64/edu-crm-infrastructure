@@ -8,7 +8,6 @@ INSERT INTO
 VALUES
   (1, 'mockStudent1', 'tg'),
   (2, 'mockStudent2', 'vk');
-  
 
 INSERT INTO
   classes (id, teacherID, title, description, inviteToken)
@@ -19,11 +18,11 @@ VALUES
 INSERT INTO
   chats (id, teacherID, studentID, classID)
 VALUES
-  (1,1, 1, 1),
-  (2,1, 2, 1);
+  (1, 1, 1, 1),
+  (2, 1, 2, 1);
 
 INSERT INTO
-  messages (chatID, text, isAuthorTeacher, time, isRead)
+  messages (chatID, text, isAuthorTeacher, createTime, isRead)
 VALUES
   (
     1,
@@ -54,7 +53,6 @@ VALUES
     false
   );
 
-
 INSERT INTO
   classes_students (classID, studentID)
 VALUES
@@ -63,7 +61,7 @@ VALUES
   (2, 2);
 
 INSERT INTO
-  posts (classID, text, attaches, time)
+  posts (classID, text, attaches, createTime)
 VALUES
   (
     1,
@@ -120,7 +118,7 @@ VALUES
   );
 
 INSERT INTO
-  solutions (hwID, studentID, text, time, file)
+  solutions (hwID, studentID, text, createTime, file)
 VALUES
   (
     1,
