@@ -29,7 +29,7 @@ CREATE TABLE
         chatID INT REFERENCES chats (id) ON DELETE CASCADE,
         text TEXT NOT NULL,
         isAuthorTeacher BOOLEAN NOT NULL,
-        attaches VARCHAR[],
+        attaches VARCHAR[] NOT NULL DEFAULT ARRAY[]::VARCHAR[],
         time TIMESTAMP NOT NULL,
         isRead BOOLEAN NOT NULL DEFAULT FALSE
     );
@@ -56,7 +56,7 @@ CREATE TABLE
         id SERIAL PRIMARY KEY,
         classID INT REFERENCES classes (id) ON DELETE CASCADE,
         text TEXT,
-        attaches VARCHAR[],
+        attaches VARCHAR[] NOT NULL DEFAULT ARRAY[]::VARCHAR[],
         time TIMESTAMP NOT NULL
     );
 
