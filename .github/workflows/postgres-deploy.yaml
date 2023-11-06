@@ -33,5 +33,6 @@ jobs:
             echo "${{ secrets.POSTGRES_ENV }}" > ${{ env.ENV_FILE }}
             sed -i '/DRONE_SSH_PREV_COMMAND_EXIT_CODE/d' ${{ env.ENV_FILE }}
             sudo rm -rf ${{ env.DATA_FILE }}
+            docker compose pull --parallel ${{ env.CONTAINER }}
             docker compose up -d --no-deps --force-recreate ${{ env.CONTAINER }}
             docker system prune -af --volumes
