@@ -1,22 +1,29 @@
 INSERT INTO
-  teachers (login, name, password)
+  teachers (id, login, name, password)
 VALUES
-  ('art@art', 'mockTeacher', '123');
+  (1, 'art@art', 'mockTeacher', '123');
 
 INSERT INTO
-  students (name, socialType)
+  students (id, name, socialType)
 VALUES
-  ('mockStudent1', 'tg'),
-  ('mockStudent2', 'vk');
+  (1, 'mockStudent1', 'tg'),
+  (2, 'mockStudent2', 'vk');
+  
 
 INSERT INTO
-  chats (teacherID, studentID)
+  classes (id, teacherID, title, description, inviteToken)
 VALUES
-  (1, 1),
-  (1, 2);
+  (1, 1, 'Class 1', 'My first class', '1234567890'),
+  (2, 1, 'Class 2', 'My second class', 'qwertyuiop');
 
 INSERT INTO
-  messages (chatID, text, isAuthorTeacher, createTime, isRead)
+  chats (id, teacherID, studentID, classID)
+VALUES
+  (1,1, 1, 1),
+  (2,1, 2, 1);
+
+INSERT INTO
+  messages (chatID, text, isAuthorTeacher, time, isRead)
 VALUES
   (
     1,
@@ -47,11 +54,6 @@ VALUES
     false
   );
 
-INSERT INTO
-  classes (teacherID, title, description, inviteToken)
-VALUES
-  (1, 'Class 1', 'My first class', '1234567890'),
-  (1, 'Class 2', 'My second class', 'qwertyuiop');
 
 INSERT INTO
   classes_students (classID, studentID)
@@ -61,7 +63,7 @@ VALUES
   (2, 2);
 
 INSERT INTO
-  posts (classID, text, attaches, createTime)
+  posts (classID, text, attaches, time)
 VALUES
   (
     1,
@@ -118,7 +120,7 @@ VALUES
   );
 
 INSERT INTO
-  solutions (hwID, studentID, text, createTime, file)
+  solutions (hwID, studentID, text, time, file)
 VALUES
   (
     1,
