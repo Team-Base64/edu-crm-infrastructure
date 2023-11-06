@@ -20,7 +20,9 @@ CREATE TABLE
         id SERIAL PRIMARY KEY,
         teacherID INT REFERENCES teachers (id) ON DELETE CASCADE,
         studentID INT REFERENCES students (id) ON DELETE CASCADE,
-        UNIQUE (teacherID, studentID)
+        classID INT REFERENCES classes (id) ON DELETE CASCADE,
+        UNIQUE (teacherID, studentID),
+        UNIQUE (studentID, chatID)
     );
 
 CREATE TABLE
