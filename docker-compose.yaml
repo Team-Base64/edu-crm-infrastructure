@@ -4,7 +4,7 @@ services:
     hostname: postgres
     image: postgres:alpine
     env_file:
-      - ./.postgres-env
+      - env/postgres.env
     volumes:
       - ./sql:/docker-entrypoint-initdb.d
       - ./postgres-data:/var/lib/postgresql/data
@@ -17,7 +17,6 @@ services:
       interval: 5s
       timeout: 2s
       retries: 10
-    restart: unless-stopped
   backend:
     container_name: backend
     hostname: backend
@@ -25,7 +24,22 @@ services:
     depends_on:
       postgres:
         condition: service_healthy
+      chat:
+        condition: service_started
     env_file:
-      - ./.backend-env
+      - env/backend.env
     ports:
       - 8080:8080
+  chat:
+    container_name: chat
+    hostname: chat
+    build: ghcr.io/team-base64/edu-crm-chat-service-app:latest
+    depends_on:
+      postgres:
+        condition: service_healthy
+    env_file:
+      - env/chat-service.env
+    ports:
+      - 8081:8081
+    volumes:
+      - /home/ubuntu/educrm/filestorage:/filestorage
