@@ -33,7 +33,7 @@ services:
   chat:
     container_name: chat
     hostname: chat
-    build: ghcr.io/team-base64/edu-crm-chat-service-app:latest
+    image: ghcr.io/team-base64/edu-crm-chat-service-app:latest
     depends_on:
       postgres:
         condition: service_healthy
