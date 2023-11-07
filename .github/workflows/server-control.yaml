@@ -12,6 +12,7 @@ on:
           - enable
           - disable
           - restart
+          - update envs
 
 env:
   DELETE_FILES: "postgres-data"
@@ -60,3 +61,22 @@ jobs:
             sudo rm -rf ${{ env.DELETE_FILES }}
             docker compose up -d
             docker system prune -af --volumes
+      - name: Update envs
+        if: ${{inputs.cmd_type == 'update envs'}}
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSH_KEY }}
+          script_stop: true
+          script: |
+            cd ${{ secrets.TARGET_DOCKER_COMPOSE }}
+            echo "${{ secrets.POSTGRES_ENV }}" > ${{ vars.ENV_FILE_POSTGRES }}
+            sed -i '/DRONE_SSH_PREV_COMMAND_EXIT_CODE/d' ${{ vars.ENV_FILE_POSTGRES }}
+            echo "${{ secrets.BACKEND_ENV }}" > ${{ vars.ENV_FILE_BACKEND }}
+            sed -i '/DRONE_SSH_PREV_COMMAND_EXIT_CODE/d' ${{ vars.ENV_FILE_BACKEND }}
+            echo "${{ secrets.CHAT_SERVICE_ENV }}" > ${{ vars.ENV_FILE_CHAT_SERVICE }}
+            sed -i '/DRONE_SSH_PREV_COMMAND_EXIT_CODE/d' ${{ vars.ENV_FILE_CHAT_SERVICE }}
+            docker compose stop
+            docker compose create
+            docker compose start
