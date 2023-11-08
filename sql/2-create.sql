@@ -1,4 +1,4 @@
-CREATE TYPE SOCIAL AS ENUM('tg', 'vk');
+
 
 CREATE TABLE
     teachers (
@@ -12,7 +12,7 @@ CREATE TABLE
     students (
         id SERIAL PRIMARY KEY,
         name VARCHAR(100) NOT NULL,
-        socialType SOCIAL NOT NULL
+        socialType VARCHAR(100) NOT NULL
     );
 
 CREATE TABLE
