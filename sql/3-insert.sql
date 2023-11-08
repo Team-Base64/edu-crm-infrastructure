@@ -15,11 +15,16 @@ VALUES
   (1, 'Class 1', 'My first class', '12345678'),
   (1, 'Class 2', 'My second class', 'qwertyui');
 
-INSERT INTO
+  INSERT INTO
   chats (teacherID, studentID, classID)
 VALUES
-  (1, 1, 1),
-  (1, 2, 1);
+  (1, 1, 1);
+
+-- INSERT INTO
+--   chats (teacherID, studentID, classID)
+-- VALUES
+--   (1, 1, 1),
+--   (1, 2, 1);
 
 INSERT INTO
   messages (chatID, text, isAuthorTeacher, createTime, isRead)
@@ -37,21 +42,39 @@ VALUES
     false,
     '2020-03-17 19:22:01.178882-07',
     false
-  ),
-  (
-    2,
-    'mes21',
-    true,
-    '2017-03-17 19:43:35.178882-07',
-    true
-  ),
-  (
-    2,
-    'mes22',
-    false,
-    '2020-03-17 19:22:01.178882-07',
-    false
   );
+
+-- INSERT INTO
+--   messages (chatID, text, isAuthorTeacher, createTime, isRead)
+-- VALUES
+--   (
+--     1,
+--     'mes1',
+--     true,
+--     '2017-03-17 19:43:35.178882-07',
+--     true
+--   ),
+--   (
+--     1,
+--     'mes2',
+--     false,
+--     '2020-03-17 19:22:01.178882-07',
+--     false
+--   ),
+--   (
+--     2,
+--     'mes21',
+--     true,
+--     '2017-03-17 19:43:35.178882-07',
+--     true
+--   ),
+--   (
+--     2,
+--     'mes22',
+--     false,
+--     '2020-03-17 19:22:01.178882-07',
+--     false
+--   );
 
 INSERT INTO
   classes_students (classID, studentID)
