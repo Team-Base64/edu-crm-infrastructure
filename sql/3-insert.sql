@@ -1,25 +1,25 @@
 INSERT INTO
-  teachers (id, login, name, password)
+  teachers (login, name, password)
 VALUES
-  (1, 'art@art', 'mockTeacher', '123');
+  ('art@art', 'mockTeacher', '123');
 
 INSERT INTO
-  students (id, name, socialType)
+  students (name, socialType)
 VALUES
-  (1, 'mockStudent1', 'tg'),
-  (2, 'mockStudent2', 'vk');
+  ('mockStudent1', 'tg'),
+  ('mockStudent2', 'vk');
 
 INSERT INTO
-  classes (id, teacherID, title, description, inviteToken)
+  classes (teacherID, title, description, inviteToken)
 VALUES
-  (1, 1, 'Class 1', 'My first class', '1234567890'),
-  (2, 1, 'Class 2', 'My second class', 'qwertyuiop');
+  (1, 'Class 1', 'My first class', '12345678'),
+  (1, 'Class 2', 'My second class', 'qwertyui');
 
 INSERT INTO
-  chats (id, teacherID, studentID, classID)
+  chats (teacherID, studentID, classID)
 VALUES
-  (1, 1, 1, 1),
-  (2, 1, 2, 1);
+  (1, 1, 1),
+  (1, 2, 1);
 
 INSERT INTO
   messages (chatID, text, isAuthorTeacher, createTime, isRead)
