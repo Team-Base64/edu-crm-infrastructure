@@ -1,80 +1,52 @@
 INSERT INTO
   teachers (login, name, password)
 VALUES
-  ('art@art', 'mockTeacher', '123');
+  ('art@art', 'Иван Иванович', '123');
 
 INSERT INTO
   students (name, socialType)
 VALUES
-  ('mockStudent1', 'tg'),
-  ('mockStudent2', 'vk');
+  ('Ева', 'tg'),
+  ('Адам', 'vk');
 
 INSERT INTO
   classes (teacherID, title, description, inviteToken)
 VALUES
-  (1, 'Class 1', 'My first class', '12345678'),
-  (1, 'Class 2', 'My second class', 'qwertyui');
+  (
+    1,
+    'Физика 9 класс',
+    'Подтягиваем знания по физике',
+    '12345678'
+  ),
+  (
+    1,
+    'Математика 9 класс',
+    'Готовимся к ОГЭ по математике',
+    'qwertyui'
+  );
 
-  INSERT INTO
+INSERT INTO
   chats (teacherID, studentID, classID)
 VALUES
   (1, 1, 1);
-
--- INSERT INTO
---   chats (teacherID, studentID, classID)
--- VALUES
---   (1, 1, 1),
---   (1, 2, 1);
 
 INSERT INTO
   messages (chatID, text, isAuthorTeacher, createTime, isRead)
 VALUES
   (
     1,
-    'mes1',
+    'Здравствуй! Как твои успех?',
     true,
-    '2017-03-17 19:43:35.178882-07',
+    '2023-11-05 19:43:35.178882-07',
     true
   ),
   (
     1,
-    'mes2',
+    'Здравствуйте! Опять получила двойку(',
     false,
-    '2020-03-17 19:22:01.178882-07',
+    '2023-11-06 19:22:01.178882-07',
     false
   );
-
--- INSERT INTO
---   messages (chatID, text, isAuthorTeacher, createTime, isRead)
--- VALUES
---   (
---     1,
---     'mes1',
---     true,
---     '2017-03-17 19:43:35.178882-07',
---     true
---   ),
---   (
---     1,
---     'mes2',
---     false,
---     '2020-03-17 19:22:01.178882-07',
---     false
---   ),
---   (
---     2,
---     'mes21',
---     true,
---     '2017-03-17 19:43:35.178882-07',
---     true
---   ),
---   (
---     2,
---     'mes22',
---     false,
---     '2020-03-17 19:22:01.178882-07',
---     false
---   );
 
 INSERT INTO
   classes_students (classID, studentID)
@@ -88,21 +60,21 @@ INSERT INTO
 VALUES
   (
     1,
-    'Texttexttext texttext',
+    'На следующем занятии будет повторения тем 8 класса! Всем подготовиться.',
     '{"/qwe/qwe", "/ewq/ewq"}',
     '2020-03-17 19:22:01.178882-07'
   ),
   (
     2,
-    'OJNSdnd dofnwoe',
+    'Я приболел( Занятия на ближайщую неделю отменяются.',
     '{"/qwe/qwe"}',
     '2020-03-17 19:22:01.178882-07'
   ),
   (
     2,
-    'OJNSdnd dofnwoe',
+    'Очень важное сообщение!',
     '{}',
-    '2020-03-17 19:22:01.178882-07'
+    '2020-03-17 19:30:01.178882-07'
   );
 
 INSERT INTO

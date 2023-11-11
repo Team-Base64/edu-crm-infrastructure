@@ -1,5 +1,3 @@
-
-
 CREATE TABLE
     teachers (
         id SERIAL PRIMARY KEY,
@@ -70,6 +68,20 @@ CREATE TABLE
         createTime TIMESTAMP NOT NULL,
         deadlineTime TIMESTAMP NOT NULL,
         file VARCHAR(100)
+    );
+
+CREATE TABLE
+    tasks (
+        id SERIAL PRIMARY KEY,
+        description TEXT,
+        attach VARCHAR(100)
+    );
+
+CREATE TABLE
+    homeworks_tasks (
+        id SERIAL PRIMARY KEY,
+        homeworkID INT REFERENCES homeworks (id) ON DELETE CASCADE,
+        taskID INT REFERENCES tasks (id) ON DELETE CASCADE
     );
 
 CREATE TABLE
