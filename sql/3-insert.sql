@@ -3,6 +3,11 @@ INSERT INTO
 VALUES
   ('art@art', 'Иван Иванович', '123');
 
+  INSERT INTO
+  calendars (teacherID, idInGoogle)
+VALUES
+  (1, '611a7b115cb31d14e41c9909e07db425548dd3b5fa76a145f3c93ae7410bc142@group.calendar.google.com');
+
 INSERT INTO
   students (name, socialType)
 VALUES
