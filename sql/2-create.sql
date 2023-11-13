@@ -74,15 +74,9 @@ CREATE TABLE
 CREATE TABLE
     tasks (
         id SERIAL PRIMARY KEY,
+        teacherID INT REFERENCES teachers (id) ON DELETE CASCADE,
         description TEXT,
         attach VARCHAR(100)
-    );
-
-CREATE TABLE
-    homeworks_tasks (
-        id SERIAL PRIMARY KEY,
-        homeworkID INT REFERENCES homeworks (id) ON DELETE CASCADE,
-        taskID INT REFERENCES tasks (id) ON DELETE CASCADE
     );
 
 CREATE TABLE
