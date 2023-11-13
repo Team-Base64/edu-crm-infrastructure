@@ -3,7 +3,8 @@ CREATE TABLE
         id SERIAL PRIMARY KEY,
         login VARCHAR(50) UNIQUE NOT NULL,
         password VARCHAR(30),
-        name VARCHAR(100) NOT NULL
+        name VARCHAR(100) NOT NULL,
+        OAUTH2Token VARCHAR DEFAULT NULL
     );
 
 CREATE TABLE
@@ -92,4 +93,11 @@ CREATE TABLE
         text TEXT,
         createTime TIMESTAMP NOT NULL,
         file VARCHAR(100)
+    );
+
+CREATE TABLE
+    calendars (
+        id SERIAL PRIMARY KEY,
+        teacherID INT REFERENCES teachers (id) ON DELETE CASCADE,
+        idInGoogle VARCHAR NOT NULL UNIQUE
     );
