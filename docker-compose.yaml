@@ -71,3 +71,28 @@ services:
           condition: service_started
     env_file:
         - env/tg-bots.env
+  vkdb:
+    container_name: vkdb
+    hostname: vkdb
+    image: postgres:alpine
+    volumes:
+      - ./vk-bots-sql:/docker-entrypoint-initdb.d/
+      - ./vk-bots-data:/var/postgres_data
+    env_file:
+      - env/vk-bots.env
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -d vk_bots_db -U george" ]
+      interval: 5s
+      timeout: 2s
+      retries: 10
+  vk:
+    container_name: vk
+    hostname: vk
+    image: ghcr.io/team-base64/edu-crm-vk-bots-app:latest
+    depends_on:
+      vkdb:
+        condition: service_healthy
+      chat:
+        condition: service_started
+    env_file:
+      - env/vk-bots.env
