@@ -30,6 +30,9 @@ services:
       - env/backend.env
     ports:
       - 8080:8080
+    volumes:
+      - /var/api/educrm/backend-files:/artifacts
+      - /var/api/educrm/store/filestorage:/filestorage
   chat:
     container_name: chat
     hostname: chat
@@ -41,5 +44,3 @@ services:
       - env/chat-service.env
     ports:
       - 8081:8081
-    volumes:
-      - /var/api/educrm/store/filestorage:/filestorage
