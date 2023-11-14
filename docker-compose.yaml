@@ -44,3 +44,28 @@ services:
       - env/chat-service.env
     ports:
       - 8081:8081
+  tgdb:
+    container_name: tgdb
+    hostname: tgdb
+    image: postgres:alpine
+    volumes:
+      - ./tg-bots-sql:/docker-entrypoint-initdb.d/
+      - ./tg-bots-data:/var/postgres_data
+    env_file:
+      - env/tg-bots.env
+    healthcheck:
+      test: [ 'CMD-SHELL', 'pg_isready -U spuser -d tgBotsDb' ]
+      interval: 5s
+      timeout: 2s
+      retries: 10
+  tg:
+    container_name: tg
+    hostname: tg
+    image: ghcr.io/team-base64/edu-crm-tg-bots-app:latest
+    depends_on:
+        tgdb:
+            condition: service_healthy
+        chat:
+          condition: service_started
+    env_file:
+        - env/tg-bots.env
