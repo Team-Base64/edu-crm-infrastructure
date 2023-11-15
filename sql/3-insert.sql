@@ -1,18 +1,21 @@
 INSERT INTO
   teachers (login, name, password)
 VALUES
-  ('art@art', 'Иван Иванович', '123');
+  ('art@art', 'Артем Артемович', '123');
 
-  INSERT INTO
+INSERT INTO
   calendars (teacherID, idInGoogle)
 VALUES
-  (1, '611a7b115cb31d14e41c9909e07db425548dd3b5fa76a145f3c93ae7410bc142@group.calendar.google.com');
+  (
+    1,
+    '611a7b115cb31d14e41c9909e07db425548dd3b5fa76a145f3c93ae7410bc142@group.calendar.google.com'
+  );
 
 INSERT INTO
   students (name, socialType)
 VALUES
-  ('Ева', 'tg'),
-  ('Адам', 'vk');
+  ('Полина', 'tg'),
+  ('Максим', 'vk');
 
 INSERT INTO
   classes (teacherID, title, description, inviteToken)
@@ -66,20 +69,20 @@ VALUES
   (
     1,
     'На следующем занятии будет повторения тем 8 класса! Всем подготовиться.',
-    '{"/qwe/qwe", "/ewq/ewq"}',
-    '2020-03-17 19:22:01.178882-07'
+    '{"https://educrm.us.to/filestorage/chat/urgant.jpg"}',
+    '2023-10-17 19:22:01.178882-07'
   ),
   (
     2,
     'Я приболел( Занятия на ближайщую неделю отменяются.',
-    '{"/qwe/qwe"}',
-    '2020-03-17 19:22:01.178882-07'
+    '{"https://educrm.us.to/filestorage/chat/sova.jpg", "https://educrm.us.to/filestorage/chat/boleu.jpg"}',
+    '2023-10-18 12:10:01.178882-07'
   ),
   (
     2,
     'Очень важное сообщение!',
     '{}',
-    '2020-03-17 19:30:01.178882-07'
+    '2023-10-25 22:30:01.178882-07'
   );
 
 INSERT INTO
@@ -88,56 +91,84 @@ INSERT INTO
     title,
     description,
     createTime,
-    deadlineTime,
-    file
+    deadlineTime
   )
 VALUES
   (
     1,
-    'Texttexttext texttext',
-    'Texttexttext texttext Texttexttext texttext',
-    '2020-03-17 19:22:01.178882-07',
-    '2020-03-18 19:22:01.178882-07',
-    '/qwe/qwe/qwe'
+    'Проверочное домашнее задание.',
+    'Напиши все темы, которые тебе даются тяжело.',
+    '2023-11-13 17:22:01.178882-07',
+    '2023-11-17 17:22:01.178882-07'
   ),
   (
     2,
-    'OJNSdnd dofnwoe',
-    'OJNSdnd dofnwoe OJNSdnd dofnwoe',
-    '2020-03-17 19:22:01.178882-07',
-    '2020-04-17 19:22:01.178882-07',
-    '/ewq/ewq/ewq'
+    'Еженедельное домашнее задание',
+    'Сегодня только одно задание. Отдыхай!',
+    '2023-10-13 17:22:01.178882-07',
+    '2023-10-15 17:22:01.178882-07'
   ),
   (
     2,
-    'Sddwcsd dscwefwe',
-    'Sddwcsd dscwefweSddwcsd dscwefwe',
-    '2020-03-17 19:22:01.178882-07',
-    '2021-04-17 19:22:01.178882-07',
-    '/ewq/ewq/vfe'
+    'Задачи на весь месяц.',
+    'Решай эти задачи по мере прохождения материла.',
+    '2023-10-13 17:22:01.178882-07',
+    '2023-12-20 17:22:01.178882-07'
   );
 
 INSERT INTO
-  solutions (hwID, studentID, text, createTime, file)
+  tasks (teacherID, description, attach)
+VALUES
+  (
+    1,
+    'Задача на систему уравнений тип 20',
+    'https://educrm.us.to/filestorage/homework/system.png'
+  ),
+  (
+    1,
+    'Текстовая задача тип 12',
+    'https://educrm.us.to/filestorage/homework/text12.png'
+  ),
+  (
+    1,
+    'Задача с таблицей уравнений тип 5',
+    'https://educrm.us.to/filestorage/homework/table5.png'
+  ),
+  (
+    1,
+    'Задача на статистику тип 10',
+    'https://educrm.us.to/filestorage/homework/stat10.png'
+  );
+
+INSERT INTO
+  homeworks_tasks (homeworkID, taskID, rank)
+VALUES
+  (2, 1, 1),
+  (3, 2, 1),
+  (3, 3, 2),
+  (3, 4, 3);
+
+INSERT INTO
+  solutions (homeworkID, studentID, text, createTime, file)
 VALUES
   (
     1,
     1,
-    'cwefwesdef efdwefwe',
-    '2020-03-17 19:40:01.178882-07',
-    '/qwe/qwe/fvfd'
+    'Не понимаю всё(',
+    '2023-11-20 17:22:01.178882-07',
+    ''
   ),
   (
     2,
     1,
-    'wefdsfewfew',
-    '2020-05-17 19:22:01.178882-07',
-    '/qwe/we'
+    'Вроде всё решил правильно',
+    '2023-10-14 17:22:01.178882-07',
+    'https://educrm.us.to/filestorage/solution/solpdf.pdf'
   ),
   (
-    3,
     2,
-    'egvdrgregergf',
-    '2020-05-17 19:50:01.178882-07',
-    '/qwe/weffff'
+    2,
+    'Получилось, но не всё',
+    '2023-10-15 16:22:01.178882-07',
+    'https://educrm.us.to/filestorage/solution/sol1.png'
   );

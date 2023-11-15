@@ -5,7 +5,7 @@ on: push
 env:
   DEPLOY_SRC: "sql"
   CONTAINER: "postgres"
-  DATA_FILE: "postgres-data"
+  DATA_FILE: "*-data"
 
 jobs:
   deploy:
@@ -29,7 +29,7 @@ jobs:
           script_stop: true
           script: |
             cd ${{ secrets.TARGET_DOCKER_COMPOSE }}
-            echo "${{ secrets.POSTGRES_ENV }}" > ${{ vars.ENV_FILE_POSTGRES }}
+            echo '${{ secrets.POSTGRES_ENV }}' > ${{ vars.ENV_FILE_POSTGRES }}
             sed -i '/DRONE_SSH_PREV_COMMAND_EXIT_CODE/d' ${{ vars.ENV_FILE_POSTGRES }}
             sudo rm -rf ${{ env.DATA_FILE }}
             docker compose stop

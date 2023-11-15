@@ -67,8 +67,7 @@ CREATE TABLE
         title VARCHAR(100) NOT NULL,
         description TEXT,
         createTime TIMESTAMP NOT NULL,
-        deadlineTime TIMESTAMP NOT NULL,
-        file VARCHAR(100)
+        deadlineTime TIMESTAMP NOT NULL
     );
 
 CREATE TABLE
@@ -80,9 +79,18 @@ CREATE TABLE
     );
 
 CREATE TABLE
+    homeworks_tasks (
+        id SERIAL PRIMARY KEY,
+        homeworkID INT REFERENCES homeworks (id) ON DELETE CASCADE,
+        taskID INT REFERENCES tasks (id) ON DELETE CASCADE,
+        rank INT NOT NULL,
+        UNIQUE (homeworkID, rank)
+    );
+
+CREATE TABLE
     solutions (
         id SERIAL PRIMARY KEY,
-        hwID INT REFERENCES homeworks (id) ON DELETE CASCADE,
+        homeworkID INT REFERENCES homeworks (id) ON DELETE CASCADE,
         studentID INT REFERENCES students (id) ON DELETE CASCADE,
         text TEXT,
         createTime TIMESTAMP NOT NULL,
