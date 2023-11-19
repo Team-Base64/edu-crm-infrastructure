@@ -92,9 +92,11 @@ CREATE TABLE
         id SERIAL PRIMARY KEY,
         homeworkID INT REFERENCES homeworks (id) ON DELETE CASCADE,
         studentID INT REFERENCES students (id) ON DELETE CASCADE,
-        text TEXT,
+        text TEXT NOT NULL,
         createTime TIMESTAMP NOT NULL,
-        file VARCHAR(100)
+        file VARCHAR(100) NOT NULL,
+        isApproved BOOLEAN DEFAULT NULL,
+        teacherEvaluation TEXT NOT NULL DEFAULT ''
     );
 
 CREATE TABLE
