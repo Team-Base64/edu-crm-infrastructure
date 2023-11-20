@@ -47,7 +47,7 @@ services:
     container_name: tgdb
     image: postgres:alpine
     volumes:
-      - ./sql/tg-bots-sql:/docker-entrypoint-initdb.d/
+      - ./sql/tgdb-sql:/docker-entrypoint-initdb.d/
     env_file:
       - env/tgdb.env
     healthcheck:
@@ -72,11 +72,11 @@ services:
     container_name: vkdb
     image: postgres:alpine
     volumes:
-      - ./sql/vk-bots-sql:/docker-entrypoint-initdb.d/
+      - ./sql/vkdb-sql:/docker-entrypoint-initdb.d/
     env_file:
       - ./env/vkdb.env
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -h tgdb -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      test: ["CMD-SHELL", "pg_isready -h vkdb -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
       interval: 5s
       timeout: 2s
       retries: 10
