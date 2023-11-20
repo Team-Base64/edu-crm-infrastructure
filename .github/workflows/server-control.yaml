@@ -15,7 +15,6 @@ on:
           - update envs and confs
 
 env:
-  DELETE_FILES: "postgres-data tg-bots-data"
   SERVICE: "nginx"
 
 jobs:
@@ -58,7 +57,6 @@ jobs:
             sudo systemctl restart ${{ env.SERVICE }}
             cd ${{ secrets.TARGET_DOCKER_COMPOSE }}
             docker compose down --rmi all
-            sudo rm -rf ${{ env.DELETE_FILES }}
             docker compose up -d
             docker system prune -af --volumes
       - name: Update envs and confs
@@ -71,14 +69,22 @@ jobs:
           script_stop: true
           script: |
             cd ${{ secrets.TARGET_DOCKER_COMPOSE }}
-            echo '${{ secrets.POSTGRES_ENV }}' > ${{ vars.ENV_FILE_POSTGRES }}
-            sed -i '/DRONE_SSH_PREV_COMMAND_EXIT_CODE/d' ${{ vars.ENV_FILE_POSTGRES }}
+            echo '${{ secrets.BACKDB_ENV }}' > ${{ vars.ENV_FILE_BACKDB }}
+            sed -i '/DRONE_SSH_PREV_COMMAND_EXIT_CODE/d' ${{ vars.ENV_FILE_BACKDB }}
             echo '${{ secrets.BACKEND_ENV }}' > ${{ vars.ENV_FILE_BACKEND }}
             sed -i '/DRONE_SSH_PREV_COMMAND_EXIT_CODE/d' ${{ vars.ENV_FILE_BACKEND }}
             echo '${{ secrets.CHAT_SERVICE_ENV }}' > ${{ vars.ENV_FILE_CHAT_SERVICE }}
             sed -i '/DRONE_SSH_PREV_COMMAND_EXIT_CODE/d' ${{ vars.ENV_FILE_CHAT_SERVICE }}
-            echo '${{ secrets.BACKEND_CREDENTIALS }}' > ${{ vars.BACKEND_CREDENTIALS_FILE }}
-            sed -i '/DRONE_SSH_PREV_COMMAND_EXIT_CODE/d' ${{ vars.BACKEND_CREDENTIALS_FILE }}
+            echo '${{ secrets.TGDB_ENV }}' > ${{ vars.ENV_FILE_TGDB }}
+            sed -i '/DRONE_SSH_PREV_COMMAND_EXIT_CODE/d' ${{ vars.ENV_FILE_TGDB }}
+            echo '${{ secrets.TG_BOTS_ENV }}' > ${{ vars.ENV_FILE_TG_BOTS }}
+            sed -i '/DRONE_SSH_PREV_COMMAND_EXIT_CODE/d' ${{ vars.ENV_FILE_TG_BOTS }}
+            echo '${{ secrets.VKDB_ENV }}' > ${{ vars.ENV_FILE_VKDB }}
+            sed -i '/DRONE_SSH_PREV_COMMAND_EXIT_CODE/d' ${{ vars.ENV_FILE_VKDB }}
+            echo '${{ secrets.VK_BOTS_ENV }}' > ${{ vars.ENV_FILE_VK_BOTS }}
+            sed -i '/DRONE_SSH_PREV_COMMAND_EXIT_CODE/d' ${{ vars.ENV_FILE_VK_BOTS }}
+            echo '${{ secrets.GOOGLE_CREDENTIALS_API }}' > ${{ vars.GOOGLE_CREDENTIALS_FILE }}
+            sed -i '/DRONE_SSH_PREV_COMMAND_EXIT_CODE/d' ${{ vars.GOOGLE_CREDENTIALS_FILE }}
             echo '${{ secrets.GOOGLE_TOKEN_API }}' > ${{ vars.GOOGLE_TOKEN_FILE }}
             sed -i '/DRONE_SSH_PREV_COMMAND_EXIT_CODE/d' ${{ vars.GOOGLE_TOKEN_FILE }}
             docker compose stop
