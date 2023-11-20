@@ -1,68 +1,64 @@
 services:
-  postgres:
-    container_name: postgres
-    hostname: postgres
+  backdb:
+    container_name: backdb
     image: postgres:alpine
     env_file:
-      - env/postgres.env
+      - ./env/backdb.env
     volumes:
-      - ./sql:/docker-entrypoint-initdb.d
-      - ./postgres-data:/var/lib/postgresql/data
+      - ./sql/backend-sql:/docker-entrypoint-initdb.d
     healthcheck:
-      test:
-        [
-          "CMD-SHELL",
-          "pg_isready -h postgres -U educrm -d educrm"
-        ]
+      test: ["CMD-SHELL", "pg_isready -h backdb -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
       interval: 5s
       timeout: 2s
       retries: 10
+      start_period: 2s
+      start_interval: 1s
   backend:
     container_name: backend
-    hostname: backend
     image: ghcr.io/team-base64/edu-crm-backend-app:latest
     depends_on:
-      postgres:
+      backdb:
         condition: service_healthy
       chat:
         condition: service_started
     env_file:
-      - env/backend.env
+      - ./env/backend.env
+      - ./env/backdb.env
     ports:
       - 8080:8080
     volumes:
-      - /var/api/educrm/backend-files:/artifacts
-      - /var/api/educrm/store/filestorage:/filestorage
+      - ./artifacts/backend-files:/artifacts
+      - ./store/filestorage:/filestorage
   chat:
     container_name: chat
     hostname: chat
     image: ghcr.io/team-base64/edu-crm-chat-service-app:latest
     depends_on:
-      postgres:
+      backdb:
         condition: service_healthy
     env_file:
-      - env/chat-service.env
+      - ./env/chat-service.env
+      - ./env/backdb.env
     ports:
       - 8081:8081
     volumes:
-      - /var/api/educrm/store/filestorage:/filestorage
+      - ./store/filestorage:/filestorage
   tgdb:
     container_name: tgdb
-    hostname: tgdb
     image: postgres:alpine
     volumes:
-      - ./tg-bots-sql:/docker-entrypoint-initdb.d/
-      - ./tg-bots-data:/var/postgres_data
+      - ./sql/tg-bots-sql:/docker-entrypoint-initdb.d/
     env_file:
-      - env/tg-bots.env
+      - env/tgdb.env
     healthcheck:
-      test: [ 'CMD-SHELL', 'pg_isready -U spuser -d tgBotsDb' ]
+      test: ["CMD-SHELL", "pg_isready -h tgdb -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
       interval: 5s
       timeout: 2s
       retries: 10
+      start_period: 2s
+      start_interval: 1s
   tg:
     container_name: tg
-    hostname: tg
     image: ghcr.io/team-base64/edu-crm-tg-bots-app:latest
     depends_on:
         tgdb:
@@ -70,24 +66,24 @@ services:
         chat:
           condition: service_started
     env_file:
-        - env/tg-bots.env
+        - ./env/tg-bots.env
+        - ./env/tgdb.env
   vkdb:
     container_name: vkdb
-    hostname: vkdb
     image: postgres:alpine
     volumes:
-      - ./vk-bots-sql:/docker-entrypoint-initdb.d/
-      - ./vk-bots-data:/var/postgres_data
+      - ./sql/vk-bots-sql:/docker-entrypoint-initdb.d/
     env_file:
-      - env/vk-bots.env
+      - ./env/vkdb.env
     healthcheck:
-      test: [ "CMD-SHELL", "pg_isready -d vk_bots_db -U george" ]
+      test: ["CMD-SHELL", "pg_isready -h tgdb -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
       interval: 5s
       timeout: 2s
       retries: 10
+      start_period: 2s
+      start_interval: 1s
   vk:
     container_name: vk
-    hostname: vk
     image: ghcr.io/team-base64/edu-crm-vk-bots-app:latest
     depends_on:
       vkdb:
@@ -95,4 +91,5 @@ services:
       chat:
         condition: service_started
     env_file:
-      - env/vk-bots.env
+      - ./env/vk-bots.env
+      - ./env/vkdb.env

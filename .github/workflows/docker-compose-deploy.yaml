@@ -4,7 +4,6 @@ on: push
 
 env:
   DEPLOY_SRC: "docker-compose.yaml"
-  DELETE_FILES: "postgres-data"
 
 jobs:
   deploy:
@@ -21,8 +20,7 @@ jobs:
           script_stop: true
           script: |
             cd ${{ secrets.TARGET_DOCKER_COMPOSE }}
-            docker compose down
-            sudo rm -rf ${{ env.DELETE_FILES }}
+            docker compose down --remove-orphans
       - name: Deploy file
         uses: easingthemes/ssh-deploy@main
         with:
@@ -41,5 +39,6 @@ jobs:
           script_stop: true
           script: |
             cd ${{ secrets.TARGET_DOCKER_COMPOSE }}
+            docker compose pull
             docker compose up -d
             docker system prune -af --volumes
