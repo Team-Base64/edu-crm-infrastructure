@@ -1,7 +1,21 @@
 INSERT INTO
   teachers (login, name, password)
 VALUES
-  ('art@art', 'Артем Артемович', '123');
+  ('testing1', 'Фролов Сергей', '12345678'),
+  ('testing2', 'Никитин Ярослав', '12345678'),
+  ('testing3', 'Костина Вероника', '12345678'),
+  ('testing4', 'Назаров Леонид', '12345678'),
+  ('testing5', 'Леонов Максим', '12345678'),
+  ('testing6', 'Гаврилова Яна', '12345678'),
+  ('testing7', 'Котова София', '12345678'),
+  ('testing8', 'Дьяконова Полина', '12345678'),
+  ('testing9', 'Баранов Михаил', '12345678'),
+  ('testing10', 'Акимов Марк', '12345678'),
+  ('testing11', 'Попова Полина', '12345678'),
+  ('testing12', 'Горюнов Ярослав', '12345678'),
+  ('testing13', 'Кузнецов Константин', '12345678'),
+  ('testing14', 'Степанов Григорий', '12345678'),
+  ('testing15', 'Иванов Иван', '12345678');
 
 INSERT INTO
   calendars (teacherID, idInGoogle)
@@ -9,6 +23,62 @@ VALUES
   (
     1,
     '611a7b115cb31d14e41c9909e07db425548dd3b5fa76a145f3c93ae7410bc142@group.calendar.google.com'
+  ),
+  (
+    2,
+    'ac72cdd00f0ec2432b1d2c8f5a864057a90095ad8fa1f20f172cb2ebe0321b52@group.calendar.google.com'
+  ),
+  (
+    3,
+    '1b1ba62a4a3cf7fddb951f7da03f51ca5f5d6058985850b3b13488abc3527924@group.calendar.google.com'
+  ),
+  (
+    4,
+    'f27bd93242c35c72330e3d785c0484b4d53827a7d21bd849f0d348b0f6b844d1@group.calendar.google.com'
+  ),
+  (
+    5,
+    'ed922e7d7bbb4d2c11410467cf90efaf36bb1ab6d1b30323cfb5885e54e6ecb5@group.calendar.google.com'
+  ),
+  (
+    6,
+    '8eb96921f9ca70465205ef5bedd6a3e42fabec4864aa795b80181d53f8353e6d@group.calendar.google.com'
+  ),
+  (
+    7,
+    '548aba5d3b6afee687818eef5b1768128b9ceea50d8ce24d514e3dac608269d1@group.calendar.google.com'
+  ),
+  (
+    8,
+    '15242ab1ddcc3a30709be873eaa5d4881401b3244edd09d2570e1e2d177dfa43@group.calendar.google.com'
+  ),
+  (
+    9,
+    '627d8f4de91ac284dec74c554450803943a847c0941f94a09dbd475aab56126b@group.calendar.google.com'
+  ),
+  (
+    10,
+    '80fba9d4aa17c399c72648521cba8cceff029abd3fe3a0b1854d833cc483a1d6@group.calendar.google.com'
+  ),
+  (
+    11,
+    '674356dd88a25e45b7fa6d3d8163e84dd4d6bf19855b6183be9371a47ff88838@group.calendar.google.com'
+  ),
+  (
+    12,
+    'c8801d6ae61051809d2d5fda24938745aa2fc24b2962dab13a53308bbcdf92c7@group.calendar.google.com'
+  ),
+  (
+    13,
+    'dd0cae6a39bd63d41dace0926e80a90f38dde9bf2c39d9368e7afea2ef643b8b@group.calendar.google.com'
+  ),
+  (
+    14,
+    'a20dc00aae038c73184bba7a9ed68fdc5bf5ac5476266efbf0468c4b80fb118f@group.calendar.google.com'
+  ),
+  (
+    15,
+    '71529f3bf1497d78242b940c46bc03a9b4a25ff550c1655a1ffbf7f9a362cb49@group.calendar.google.com'
   );
 
 INSERT INTO
