@@ -20,7 +20,7 @@ CREATE TABLE
         teacherID INT REFERENCES teachers (id) ON DELETE CASCADE,
         title VARCHAR(100) NOT NULL,
         description TEXT,
-        inviteToken CHAR(10) UNIQUE NOT NULL
+        inviteToken CHAR(8) UNIQUE NOT NULL
     );
 
 CREATE TABLE
@@ -41,14 +41,6 @@ CREATE TABLE
         attaches VARCHAR[] NOT NULL DEFAULT ARRAY[]::VARCHAR[],
         createTime TIMESTAMP NOT NULL,
         isRead BOOLEAN NOT NULL DEFAULT FALSE
-    );
-
-CREATE TABLE
-    classes_students (
-        id SERIAL PRIMARY KEY,
-        classID INT REFERENCES classes (id) ON DELETE CASCADE,
-        studentID INT REFERENCES students (id) ON DELETE CASCADE,
-        UNIQUE (classID, studentID)
     );
 
 CREATE TABLE

@@ -106,7 +106,9 @@ VALUES
 INSERT INTO
   chats (teacherID, studentID, classID)
 VALUES
-  (1, 1, 1);
+  (1, 1, 1),
+  (1, 1, 2),
+  (1, 2, 2);
 
 INSERT INTO
   messages (chatID, text, isAuthorTeacher, createTime, isRead)
@@ -125,13 +127,6 @@ VALUES
     '2023-11-06 19:22:01.178882-07',
     false
   );
-
-INSERT INTO
-  classes_students (classID, studentID)
-VALUES
-  (1, 1),
-  (2, 1),
-  (2, 2);
 
 INSERT INTO
   posts (classID, text, attaches, createTime)
