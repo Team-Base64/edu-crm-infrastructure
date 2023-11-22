@@ -61,7 +61,7 @@ jobs:
             docker compose up -d
             docker system prune -af --volumes
       - name: Update envs and confs (NO DB)
-        if: ${{inputs.cmd_type == 'update envs and confs'}}
+        if: ${{inputs.cmd_type == 'update envs and confs (NO DB)'}}
         uses: appleboy/ssh-action@v1.0.0
         with:
           host: ${{ secrets.HOST }}
