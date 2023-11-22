@@ -12,7 +12,8 @@ on:
           - enable
           - disable
           - restart
-          - update envs and confs
+          - update envs and confs (NO DB)
+          - update DB envs and confs
 
 env:
   SERVICE: "nginx"
@@ -59,8 +60,33 @@ jobs:
             docker compose down --rmi all
             docker compose up -d
             docker system prune -af --volumes
-      - name: Update envs and confs
+      - name: Update envs and confs (NO DB)
         if: ${{inputs.cmd_type == 'update envs and confs'}}
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSH_KEY }}
+          script_stop: true
+          script: |
+            cd ${{ secrets.TARGET_DOCKER_COMPOSE }}
+            echo '${{ secrets.BACKEND_ENV }}' > ${{ vars.ENV_FILE_BACKEND }}
+            sed -i '/DRONE_SSH_PREV_COMMAND_EXIT_CODE/d' ${{ vars.ENV_FILE_BACKEND }}
+            echo '${{ secrets.CHAT_SERVICE_ENV }}' > ${{ vars.ENV_FILE_CHAT_SERVICE }}
+            sed -i '/DRONE_SSH_PREV_COMMAND_EXIT_CODE/d' ${{ vars.ENV_FILE_CHAT_SERVICE }}
+            echo '${{ secrets.TG_BOTS_ENV }}' > ${{ vars.ENV_FILE_TG_BOTS }}
+            sed -i '/DRONE_SSH_PREV_COMMAND_EXIT_CODE/d' ${{ vars.ENV_FILE_TG_BOTS }}
+            echo '${{ secrets.VK_BOTS_ENV }}' > ${{ vars.ENV_FILE_VK_BOTS }}
+            sed -i '/DRONE_SSH_PREV_COMMAND_EXIT_CODE/d' ${{ vars.ENV_FILE_VK_BOTS }}
+            echo '${{ secrets.GOOGLE_CREDENTIALS_API }}' > ${{ vars.GOOGLE_CREDENTIALS_FILE }}
+            sed -i '/DRONE_SSH_PREV_COMMAND_EXIT_CODE/d' ${{ vars.GOOGLE_CREDENTIALS_FILE }}
+            echo '${{ secrets.GOOGLE_TOKEN_API }}' > ${{ vars.GOOGLE_TOKEN_FILE }}
+            sed -i '/DRONE_SSH_PREV_COMMAND_EXIT_CODE/d' ${{ vars.GOOGLE_TOKEN_FILE }}
+            docker compose stop
+            docker compose create
+            docker compose start
+      - name: Update DB envs and confs
+        if: ${{inputs.cmd_type == 'update DB envs and confs'}}
         uses: appleboy/ssh-action@v1.0.0
         with:
           host: ${{ secrets.HOST }}
@@ -71,22 +97,9 @@ jobs:
             cd ${{ secrets.TARGET_DOCKER_COMPOSE }}
             echo '${{ secrets.BACKDB_ENV }}' > ${{ vars.ENV_FILE_BACKDB }}
             sed -i '/DRONE_SSH_PREV_COMMAND_EXIT_CODE/d' ${{ vars.ENV_FILE_BACKDB }}
-            echo '${{ secrets.BACKEND_ENV }}' > ${{ vars.ENV_FILE_BACKEND }}
-            sed -i '/DRONE_SSH_PREV_COMMAND_EXIT_CODE/d' ${{ vars.ENV_FILE_BACKEND }}
-            echo '${{ secrets.CHAT_SERVICE_ENV }}' > ${{ vars.ENV_FILE_CHAT_SERVICE }}
-            sed -i '/DRONE_SSH_PREV_COMMAND_EXIT_CODE/d' ${{ vars.ENV_FILE_CHAT_SERVICE }}
             echo '${{ secrets.TGDB_ENV }}' > ${{ vars.ENV_FILE_TGDB }}
             sed -i '/DRONE_SSH_PREV_COMMAND_EXIT_CODE/d' ${{ vars.ENV_FILE_TGDB }}
-            echo '${{ secrets.TG_BOTS_ENV }}' > ${{ vars.ENV_FILE_TG_BOTS }}
-            sed -i '/DRONE_SSH_PREV_COMMAND_EXIT_CODE/d' ${{ vars.ENV_FILE_TG_BOTS }}
             echo '${{ secrets.VKDB_ENV }}' > ${{ vars.ENV_FILE_VKDB }}
             sed -i '/DRONE_SSH_PREV_COMMAND_EXIT_CODE/d' ${{ vars.ENV_FILE_VKDB }}
-            echo '${{ secrets.VK_BOTS_ENV }}' > ${{ vars.ENV_FILE_VK_BOTS }}
-            sed -i '/DRONE_SSH_PREV_COMMAND_EXIT_CODE/d' ${{ vars.ENV_FILE_VK_BOTS }}
-            echo '${{ secrets.GOOGLE_CREDENTIALS_API }}' > ${{ vars.GOOGLE_CREDENTIALS_FILE }}
-            sed -i '/DRONE_SSH_PREV_COMMAND_EXIT_CODE/d' ${{ vars.GOOGLE_CREDENTIALS_FILE }}
-            echo '${{ secrets.GOOGLE_TOKEN_API }}' > ${{ vars.GOOGLE_TOKEN_FILE }}
-            sed -i '/DRONE_SSH_PREV_COMMAND_EXIT_CODE/d' ${{ vars.GOOGLE_TOKEN_FILE }}
-            docker compose stop
-            docker compose create
-            docker compose start
+            docker compose down --remove-orphans
+            docker compose up -d
