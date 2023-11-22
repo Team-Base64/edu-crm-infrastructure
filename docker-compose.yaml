@@ -5,7 +5,7 @@ services:
     env_file:
       - ./env/backdb.env
     volumes:
-      - ./sql/backend-sql:/docker-entrypoint-initdb.d
+      - ./sql/backdb-sql:/docker-entrypoint-initdb.d
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -h backdb -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
       interval: 5s
