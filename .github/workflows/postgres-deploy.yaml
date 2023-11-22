@@ -30,9 +30,9 @@ jobs:
           script_stop: true
           script: |
             cd ${{ secrets.TARGET_DOCKER_COMPOSE }}
-            docker exec -it backdb psql -U ${{ secrets.BACKDB_PG_USER }} -d ${{ secrets.BACKDB_PG_DB }} -f /docker-entrypoint-initdb.d/1-drop.sql
-            docker exec -it backdb psql -U ${{ secrets.BACKDB_PG_USER }} -d ${{ secrets.BACKDB_PG_DB }} -f /docker-entrypoint-initdb.d/2-create.sql
-            docker exec -it backdb psql -U ${{ secrets.BACKDB_PG_USER }} -d ${{ secrets.BACKDB_PG_DB }} -f /docker-entrypoint-initdb.d/3-insert.sql
+            docker exec backdb psql -U ${{ secrets.BACKDB_PG_USER }} -d ${{ secrets.BACKDB_PG_DB }} -f /docker-entrypoint-initdb.d/1-drop.sql
+            docker exec backdb psql -U ${{ secrets.BACKDB_PG_USER }} -d ${{ secrets.BACKDB_PG_DB }} -f /docker-entrypoint-initdb.d/2-create.sql
+            docker exec backdb psql -U ${{ secrets.BACKDB_PG_USER }} -d ${{ secrets.BACKDB_PG_DB }} -f /docker-entrypoint-initdb.d/3-insert.sql
       - name: TG Bots Database
         uses: appleboy/ssh-action@v1.0.0
         with:
@@ -44,9 +44,9 @@ jobs:
             cd ${{ secrets.TARGET_DOCKER_COMPOSE }}
             echo "${{ secrets.TG_BOTS_TOKENS_SQL }}" > ${{ env.TG_SECRET_SQL }}
             sed -i '/DRONE_SSH_PREV_COMMAND_EXIT_CODE/d' ${{ env.TG_SECRET_SQL }}
-            docker exec -it tgdb psql -U ${{ secrets.TGDB_PG_USER }} -d ${{ secrets.TGDB_PG_DB }} -f /docker-entrypoint-initdb.d/1-drop.sql
-            docker exec -it tgdb psql -U ${{ secrets.TGDB_PG_USER }} -d ${{ secrets.TGDB_PG_DB }} -f /docker-entrypoint-initdb.d/2-create.sql
-            docker exec -it tgdb psql -U ${{ secrets.TGDB_PG_USER }} -d ${{ secrets.TGDB_PG_DB }} -f /docker-entrypoint-initdb.d/3-insert.sql
+            docker exec tgdb psql -U ${{ secrets.TGDB_PG_USER }} -d ${{ secrets.TGDB_PG_DB }} -f /docker-entrypoint-initdb.d/1-drop.sql
+            docker exec tgdb psql -U ${{ secrets.TGDB_PG_USER }} -d ${{ secrets.TGDB_PG_DB }} -f /docker-entrypoint-initdb.d/2-create.sql
+            docker exec tgdb psql -U ${{ secrets.TGDB_PG_USER }} -d ${{ secrets.TGDB_PG_DB }} -f /docker-entrypoint-initdb.d/3-insert.sql
       - name: VK Bots Database
         uses: appleboy/ssh-action@v1.0.0
         with:
@@ -58,6 +58,6 @@ jobs:
             cd ${{ secrets.TARGET_DOCKER_COMPOSE }}
             echo "${{ secrets.VK_BOTS_TOKENS_SQL }}" > ${{ env.VK_SECRET_SQL }}
             sed -i '/DRONE_SSH_PREV_COMMAND_EXIT_CODE/d' ${{ env.VK_SECRET_SQL }}
-            docker exec -it vkdb psql -U ${{ secrets.VKDB_PG_USER }} -d ${{ secrets.VKDB_PG_DB }} -f /docker-entrypoint-initdb.d/1-drop.sql
-            docker exec -it vkdb psql -U ${{ secrets.VKDB_PG_USER }} -d ${{ secrets.VKDB_PG_DB }} -f /docker-entrypoint-initdb.d/2-create.sql
-            docker exec -it vkdb psql -U ${{ secrets.VKDB_PG_USER }} -d ${{ secrets.VKDB_PG_DB }} -f /docker-entrypoint-initdb.d/3-insert.sql
+            docker exec vkdb psql -U ${{ secrets.VKDB_PG_USER }} -d ${{ secrets.VKDB_PG_DB }} -f /docker-entrypoint-initdb.d/1-drop.sql
+            docker exec vkdb psql -U ${{ secrets.VKDB_PG_USER }} -d ${{ secrets.VKDB_PG_DB }} -f /docker-entrypoint-initdb.d/2-create.sql
+            docker exec vkdb psql -U ${{ secrets.VKDB_PG_USER }} -d ${{ secrets.VKDB_PG_DB }} -f /docker-entrypoint-initdb.d/3-insert.sql
