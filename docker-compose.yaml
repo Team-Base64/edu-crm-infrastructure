@@ -68,6 +68,7 @@ services:
     env_file:
         - ./env/tg-bots.env
         - ./env/tgdb.env
+    restart: unless-stopped
   vkdb:
     container_name: vkdb
     image: postgres:alpine
@@ -93,3 +94,4 @@ services:
     env_file:
       - ./env/vk-bots.env
       - ./env/vkdb.env
+    restart: unless-stopped
