@@ -86,7 +86,7 @@ CREATE TABLE
         studentID INT REFERENCES students (id) ON DELETE CASCADE,
         text TEXT NOT NULL,
         createTime TIMESTAMP NOT NULL,
-        file VARCHAR(100) NOT NULL,
+        files VARCHAR[] NOT NULL DEFAULT ARRAY[]::VARCHAR[],
         isApproved BOOLEAN DEFAULT NULL,
         teacherEvaluation TEXT NOT NULL DEFAULT ''
     );

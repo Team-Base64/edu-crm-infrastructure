@@ -214,26 +214,26 @@ VALUES
   (3, 4, 3);
 
 INSERT INTO
-  solutions (homeworkID, studentID, text, createTime, file)
+  solutions (homeworkID, studentID, text, createTime, files)
 VALUES
   (
     1,
     1,
     'Не понимаю всё(',
     '2023-11-20 17:22:01.178882-07',
-    ''
+    '{}'
   ),
   (
     2,
     1,
     'Вроде всё решил правильно',
     '2023-10-14 17:22:01.178882-07',
-    'https://educrm.us.to/filestorage/solution/solpdf.pdf'
+    '{"https://educrm.us.to/filestorage/solution/solpdf.pdf", "https://educrm.us.to/filestorage/solution/sol1.png"}'
   ),
   (
     2,
     2,
     'Получилось, но не всё',
     '2023-10-15 16:22:01.178882-07',
-    'https://educrm.us.to/filestorage/solution/sol1.png'
+    '{"https://educrm.us.to/filestorage/solution/sol1.png"}'
   );
