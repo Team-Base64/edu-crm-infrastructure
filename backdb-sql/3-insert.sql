@@ -228,7 +228,7 @@ VALUES
     1,
     'Вроде всё решил правильно',
     '2023-10-14 17:22:01.178882-07',
-    '{"https://educrm.us.to/filestorage/solution/solpdf.pdf", "https://educrm.us.to/filestorage/solution/sol1.png"}'
+    '{"https://educrm.us.to/filestorage/solution/solpdf.pdf", "https://educrm.us.to/filestorage/solution/sol1.jpg"}'
   ),
   (
     2,
