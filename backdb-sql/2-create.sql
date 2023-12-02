@@ -67,7 +67,7 @@ CREATE TABLE
         id SERIAL PRIMARY KEY,
         teacherID INT REFERENCES teachers (id) ON DELETE CASCADE,
         description TEXT,
-        attach VARCHAR(100)
+        attaches VARCHAR[] NOT NULL DEFAULT ARRAY[]::VARCHAR[]
     );
 
 CREATE TABLE

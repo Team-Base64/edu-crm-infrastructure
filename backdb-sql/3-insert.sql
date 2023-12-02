@@ -182,28 +182,29 @@ VALUES
   );
 
 INSERT INTO
-  tasks (teacherID, description, attach)
+  tasks (teacherID, description, attaches)
 VALUES
   (
     1,
     'Задача на систему уравнений тип 20',
-    'https://educrm.us.to/filestorage/homework/system.png'
+    '{"https://educrm.us.to/filestorage/homework/system.png"}'
   ),
   (
     1,
     'Текстовая задача тип 12',
-    'https://educrm.us.to/filestorage/homework/text12.png'
+    '{"https://educrm.us.to/filestorage/homework/text12.png"}'
   ),
   (
     1,
     'Задача с таблицей уравнений тип 5',
-    'https://educrm.us.to/filestorage/homework/table5.png'
+    '{"https://educrm.us.to/filestorage/homework/table5.png"}'
   ),
   (
     1,
     'Задача на статистику тип 10',
-    'https://educrm.us.to/filestorage/homework/stat10.png'
-  );
+    '{"https://educrm.us.to/filestorage/homework/stat10.png", "https://educrm.us.to/filestorage/homework/table5.png"}'
+  ),
+  (1, 'Подумай над смыслом жизни!', '{}');
 
 INSERT INTO
   homeworks_tasks (homeworkID, taskID, rank)
