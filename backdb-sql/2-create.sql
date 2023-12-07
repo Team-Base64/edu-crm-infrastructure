@@ -97,3 +97,9 @@ CREATE TABLE
         teacherID INT REFERENCES teachers (id) ON DELETE CASCADE,
         idInGoogle VARCHAR NOT NULL UNIQUE
     );
+
+CREATE TABLE
+    sessions (
+        id VARCHAR PRIMARY KEY,
+        teacherLogin VARCHAR REFERENCES teachers (login) ON DELETE CASCADE
+    );
