@@ -11,7 +11,8 @@ CREATE TABLE
     students (
         id SERIAL PRIMARY KEY,
         name VARCHAR(100) NOT NULL,
-        socialType VARCHAR(100) NOT NULL
+        socialType VARCHAR(100) NOT NULL,
+        avatar VARCHAR DEFAULT ''
     );
 
 CREATE TABLE
@@ -67,7 +68,7 @@ CREATE TABLE
         id SERIAL PRIMARY KEY,
         teacherID INT REFERENCES teachers (id) ON DELETE CASCADE,
         description TEXT,
-        attach VARCHAR(100)
+        attaches VARCHAR[] NOT NULL DEFAULT ARRAY[]::VARCHAR[]
     );
 
 CREATE TABLE
@@ -96,4 +97,10 @@ CREATE TABLE
         id SERIAL PRIMARY KEY,
         teacherID INT REFERENCES teachers (id) ON DELETE CASCADE,
         idInGoogle VARCHAR NOT NULL UNIQUE
+    );
+
+CREATE TABLE
+    sessions (
+        id VARCHAR PRIMARY KEY,
+        teacherLogin VARCHAR REFERENCES teachers (login) ON DELETE CASCADE
     );

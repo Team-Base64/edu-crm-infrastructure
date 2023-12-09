@@ -82,10 +82,10 @@ VALUES
   );
 
 INSERT INTO
-  students (name, socialType)
+  students (name, socialType, avatar)
 VALUES
-  ('Полина', 'tg'),
-  ('Максим', 'vk');
+  ('Полина', 'tg', 'https://i.pinimg.com/originals/9a/1d/30/9a1d30acd3e252d3ec8a76139cfabdfa.jpg'),
+  ('Максим', 'vk', 'https://i.pinimg.com/736x/4e/17/54/4e1754e0bee5fa6717259833b9b91932--haircuts-for-boys-mens-haircuts.jpg');
 
 INSERT INTO
   classes (teacherID, title, description, inviteToken)
@@ -182,28 +182,29 @@ VALUES
   );
 
 INSERT INTO
-  tasks (teacherID, description, attach)
+  tasks (teacherID, description, attaches)
 VALUES
   (
     1,
     'Задача на систему уравнений тип 20',
-    'https://educrm.us.to/filestorage/homework/system.png'
+    '{"https://educrm.us.to/filestorage/homework/system.png"}'
   ),
   (
     1,
     'Текстовая задача тип 12',
-    'https://educrm.us.to/filestorage/homework/text12.png'
+    '{"https://educrm.us.to/filestorage/homework/text12.png"}'
   ),
   (
     1,
     'Задача с таблицей уравнений тип 5',
-    'https://educrm.us.to/filestorage/homework/table5.png'
+    '{"https://educrm.us.to/filestorage/homework/table5.png"}'
   ),
   (
     1,
     'Задача на статистику тип 10',
-    'https://educrm.us.to/filestorage/homework/stat10.png'
-  );
+    '{"https://educrm.us.to/filestorage/homework/stat10.png", "https://educrm.us.to/filestorage/homework/table5.png"}'
+  ),
+  (1, 'Подумай над смыслом жизни!', '{}');
 
 INSERT INTO
   homeworks_tasks (homeworkID, taskID, rank)
@@ -228,7 +229,7 @@ VALUES
     1,
     'Вроде всё решил правильно',
     '2023-10-14 17:22:01.178882-07',
-    '{"https://educrm.us.to/filestorage/solution/solpdf.pdf", "https://educrm.us.to/filestorage/solution/sol1.png"}'
+    '{"https://educrm.us.to/filestorage/solution/solpdf.pdf", "https://educrm.us.to/filestorage/solution/sol1.jpg"}'
   ),
   (
     2,
