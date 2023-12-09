@@ -95,7 +95,7 @@ CREATE TABLE
 CREATE TABLE
     calendars (
         id SERIAL PRIMARY KEY,
-        teacherID INT REFERENCES teachers (id) ON DELETE CASCADE,
+        teacherID INT NOT NULL UNIQUE,
         idInGoogle VARCHAR NOT NULL UNIQUE
     );
 
