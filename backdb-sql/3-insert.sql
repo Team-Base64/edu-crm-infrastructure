@@ -82,10 +82,10 @@ VALUES
   );
 
 INSERT INTO
-  students (name, socialType)
+  students (name, socialType, avatar)
 VALUES
-  ('Полина', 'tg'),
-  ('Максим', 'vk');
+  ('Полина', 'tg', 'https://i.pinimg.com/originals/9a/1d/30/9a1d30acd3e252d3ec8a76139cfabdfa.jpg'),
+  ('Максим', 'vk', 'https://i.pinimg.com/736x/4e/17/54/4e1754e0bee5fa6717259833b9b91932--haircuts-for-boys-mens-haircuts.jpg');
 
 INSERT INTO
   classes (teacherID, title, description, inviteToken)

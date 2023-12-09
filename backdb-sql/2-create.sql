@@ -11,7 +11,8 @@ CREATE TABLE
     students (
         id SERIAL PRIMARY KEY,
         name VARCHAR(100) NOT NULL,
-        socialType VARCHAR(100) NOT NULL
+        socialType VARCHAR(100) NOT NULL,
+        avatar VARCHAR DEFAULT ''
     );
 
 CREATE TABLE
