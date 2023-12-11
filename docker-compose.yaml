@@ -42,6 +42,7 @@ services:
     ports:
       - 8081:8081
     volumes:
+      - ./artifacts/backend-files:/artifacts
       - ./store/backend-storage:/filestorage
   tgdb:
     container_name: tgdb
