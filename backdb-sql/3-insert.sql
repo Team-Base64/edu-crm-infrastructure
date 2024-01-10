@@ -248,13 +248,13 @@ VALUES
   (
     1,
     'На следующем занятии будет повторения тем 8 класса! Всем подготовиться.',
-    '{"https://educrm.us.to/filestorage/chat/urgant.jpg"}',
+    '{"https://edu-crm.ru/filestorage/chat/urgant.jpg"}',
     '2023-10-17 19:22:01.178882+03'
   ),
   (
     2,
     'Я приболел( Занятия на ближайщую неделю отменяются.',
-    '{"https://educrm.us.to/filestorage/chat/sova.jpg", "https://educrm.us.to/filestorage/chat/boleu.jpg"}',
+    '{"https://edu-crm.ru/filestorage/chat/sova.jpg", "https://edu-crm.ru/filestorage/chat/boleu.jpg"}',
     '2023-10-18 12:10:01.178882+03'
   ),
   (
@@ -333,41 +333,41 @@ VALUES
   (
     1,
     'Задача на систему уравнений тип 20',
-    '{"https://educrm.us.to/filestorage/homework/system.png"}'
+    '{"https://edu-crm.ru/filestorage/homework/system.png"}'
   ),
   (
     1,
     'Текстовая задача тип 12',
-    '{"https://educrm.us.to/filestorage/homework/text12.png"}'
+    '{"https://edu-crm.ru/filestorage/homework/text12.png"}'
   ),
   (
     1,
     'Задача с таблицей уравнений тип 5',
-    '{"https://educrm.us.to/filestorage/homework/table5.png"}'
+    '{"https://edu-crm.ru/filestorage/homework/table5.png"}'
   ),
   (
     1,
     'Задача на статистику тип 10',
-    '{"https://educrm.us.to/filestorage/homework/stat10.png", "https://educrm.us.to/filestorage/homework/table5.png"}'
+    '{"https://edu-crm.ru/filestorage/homework/stat10.png", "https://edu-crm.ru/filestorage/homework/table5.png"}'
   ),
   (1, 'Подумай над смыслом жизни!', '{}'),
   -- 6
   (
     2,
     'Теория вероятностей: сложение',
-    '{"https://educrm.us.to/filestorage/homework/stat10.png", "https://educrm.us.to/filestorage/homework/table5.png"}'
+    '{"https://edu-crm.ru/filestorage/homework/stat10.png", "https://edu-crm.ru/filestorage/homework/table5.png"}'
   ),
   -- 7
   (
     2,
     'Теория вероятностей: вычитание',
-    '{"https://educrm.us.to/filestorage/homework/stat10.png", "https://educrm.us.to/filestorage/homework/table5.png"}'
+    '{"https://edu-crm.ru/filestorage/homework/stat10.png", "https://edu-crm.ru/filestorage/homework/table5.png"}'
   ),
   -- 8
   (
     2,
     'Пробный вариант за декабрь',
-    '{"https://educrm.us.to/filestorage/homework/stat10.png", "https://educrm.us.to/filestorage/homework/table5.png"}'
+    '{"https://edu-crm.ru/filestorage/homework/stat10.png", "https://edu-crm.ru/filestorage/homework/table5.png"}'
   );
 
 INSERT INTO
@@ -396,33 +396,33 @@ VALUES
     1,
     'Вроде всё решил правильно',
     '2023-10-14 17:22:01.178882+03',
-    '{"https://educrm.us.to/filestorage/solution/solpdf.pdf", "https://educrm.us.to/filestorage/solution/sol1.jpg"}'
+    '{"https://edu-crm.ru/filestorage/solution/solpdf.pdf", "https://edu-crm.ru/filestorage/solution/sol1.jpg"}'
   ),
   (
     2,
     2,
     'Получилось, но не всё',
     '2023-10-15 16:22:01.178882+03',
-    '{"https://educrm.us.to/filestorage/solution/sol1.png"}'
+    '{"https://edu-crm.ru/filestorage/solution/sol1.png"}'
   ),
   (
     4,
     3,
     'Трудностей не возникло, но понимаю что нужно еще сяток подобных отрешать)',
     '2023-12-11 16:22:01.178882+03',
-    '{"https://educrm.us.to/filestorage/solution/sol1.png"}'
+    '{"https://edu-crm.ru/filestorage/solution/sol1.png"}'
   ),
   (
     4,
     8,
     'Получилось, но не всё',
     '2023-12-10 12:13:01.178882+03',
-    '{"https://educrm.us.to/filestorage/solution/sol1.png"}'
+    '{"https://edu-crm.ru/filestorage/solution/sol1.png"}'
   ),
   (
     5,
     5,
     'Сложные задачи( Думаю есть ошибки',
     '2023-12-9 21:23:01.178882+03',
-    '{"https://educrm.us.to/filestorage/solution/sol1.png"}'
+    '{"https://edu-crm.ru/filestorage/solution/sol1.png"}'
   );
