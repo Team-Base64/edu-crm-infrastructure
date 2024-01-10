@@ -74,6 +74,8 @@ jobs:
             sed -i '/DRONE_SSH_PREV_COMMAND_EXIT_CODE/d' ${{ vars.ENV_FILE_BACKEND }}
             echo '${{ secrets.CHAT_SERVICE_ENV }}' > ${{ vars.ENV_FILE_CHAT_SERVICE }}
             sed -i '/DRONE_SSH_PREV_COMMAND_EXIT_CODE/d' ${{ vars.ENV_FILE_CHAT_SERVICE }}
+            echo '${{ secrets.CALENDAR_SERVICE_ENV }}' > ${{ vars.ENV_FILE_CALENDAR_SERVICE }}
+            sed -i '/DRONE_SSH_PREV_COMMAND_EXIT_CODE/d' ${{ vars.ENV_FILE_CALENDAR_SERVICE }}
             echo '${{ secrets.TG_BOTS_ENV }}' > ${{ vars.ENV_FILE_TG_BOTS }}
             sed -i '/DRONE_SSH_PREV_COMMAND_EXIT_CODE/d' ${{ vars.ENV_FILE_TG_BOTS }}
             echo '${{ secrets.VK_BOTS_ENV }}' > ${{ vars.ENV_FILE_VK_BOTS }}
