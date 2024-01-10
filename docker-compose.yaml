@@ -21,6 +21,8 @@ services:
         condition: service_healthy
       chat:
         condition: service_started
+      calendar:
+        condition: service_started
     env_file:
       - ./env/backend.env
       - ./env/backdb.env
@@ -36,6 +38,8 @@ services:
     depends_on:
       backdb:
         condition: service_healthy
+      calendar:
+        condition: service_started
     env_file:
       - ./env/chat-service.env
       - ./env/backdb.env
@@ -44,6 +48,18 @@ services:
     volumes:
       - ./artifacts/backend-files:/artifacts
       - ./store/backend-storage:/filestorage
+  calendar:
+    container_name: calendar
+    hostname: calendar
+    build: ghcr.io/team-base64/edu-crm-calendar-service-app:latest
+    depends_on:
+      backdb:
+        condition: service_healthy
+    env_file:
+      - ./env/calendar-service.env
+      - ./env/backdb.env
+    volumes:
+      - ./artifacts/backend-files:/artifacts
   tgdb:
     container_name: tgdb
     image: postgres:alpine
