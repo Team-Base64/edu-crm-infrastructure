@@ -51,7 +51,7 @@ services:
   calendar:
     container_name: calendar
     hostname: calendar
-    build: ghcr.io/team-base64/edu-crm-calendar-service-app:latest
+    image: ghcr.io/team-base64/edu-crm-calendar-service-app:latest
     depends_on:
       backdb:
         condition: service_healthy
