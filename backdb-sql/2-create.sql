@@ -96,7 +96,7 @@ CREATE TABLE
     calendars (
         id SERIAL PRIMARY KEY,
         teacherID INT NOT NULL UNIQUE,
-        idInGoogle VARCHAR NOT NULL UNIQUE
+        internalApiID VARCHAR NOT NULL UNIQUE
     );
 
 CREATE TABLE
