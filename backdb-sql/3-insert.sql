@@ -2,10 +2,14 @@ INSERT INTO
   teachers (login, name, password)
 VALUES
   ('test1', 'Фролов Сергей', '12345678'),
-  ('OlgaVasilisk', 'Ольга Николаевна Васильева', '12345678');
+  (
+    'OlgaVasilisk',
+    'Ольга Николаевна Васильева',
+    '12345678'
+  );
 
 INSERT INTO
-  calendars (teacherID, idInGoogle)
+  calendars (teacherID, internalApiID)
 VALUES
   (
     1,
@@ -71,21 +75,52 @@ VALUES
 INSERT INTO
   students (name, socialType, avatar)
 VALUES
-  ('Полина', 'tg', 'https://i.pinimg.com/originals/9a/1d/30/9a1d30acd3e252d3ec8a76139cfabdfa.jpg'),
-  ('Максим', 'vk', 'https://i.pinimg.com/736x/4e/17/54/4e1754e0bee5fa6717259833b9b91932--haircuts-for-boys-mens-haircuts.jpg'),
+  (
+    'Полина',
+    'tg',
+    'https://i.pinimg.com/originals/9a/1d/30/9a1d30acd3e252d3ec8a76139cfabdfa.jpg'
+  ),
+  (
+    'Максим',
+    'vk',
+    'https://i.pinimg.com/736x/4e/17/54/4e1754e0bee5fa6717259833b9b91932--haircuts-for-boys-mens-haircuts.jpg'
+  ),
   -- 3
-  ('Екатерина Смирнова', 'vk', 'https://www.stockvault.net/data/2008/04/07/104880/preview16.jpg'),
+  (
+    'Екатерина Смирнова',
+    'vk',
+    'https://www.stockvault.net/data/2008/04/07/104880/preview16.jpg'
+  ),
   -- 4
-  ('Виктория Николаева', 'vk', 'https://www.stockvault.net/data/2009/01/04/107204/preview16.jpg'),
+  (
+    'Виктория Николаева',
+    'vk',
+    'https://www.stockvault.net/data/2009/01/04/107204/preview16.jpg'
+  ),
   -- 5
-  ('София Андреева', 'tg', 'https://img.freepik.com/free-photo/girl-with-long-hair-being-happy_23-2148244714.jpg?t=st=1702413678~exp=1702414278~hmac=e5fd657640c49de221bf976ea518ac4bf33b207e4c6acade5e5d6aa324bf6738'),
-  
+  (
+    'София Андреева',
+    'tg',
+    'https://img.freepik.com/free-photo/girl-with-long-hair-being-happy_23-2148244714.jpg?t=st=1702413678~exp=1702414278~hmac=e5fd657640c49de221bf976ea518ac4bf33b207e4c6acade5e5d6aa324bf6738'
+  ),
   -- 6
-  ('Михаил Кузнецов', 'tg', 'https://img.freepik.com/free-photo/portrait-of-teenage-boy_23-2148105583.jpg?w=1380&t=st=1702413529~exp=1702414129~hmac=9109e04a3537fae74e7ff8735614cd4a7bdb15a029fccae1e95e3e243bdd8618'),
+  (
+    'Михаил Кузнецов',
+    'tg',
+    'https://img.freepik.com/free-photo/portrait-of-teenage-boy_23-2148105583.jpg?w=1380&t=st=1702413529~exp=1702414129~hmac=9109e04a3537fae74e7ff8735614cd4a7bdb15a029fccae1e95e3e243bdd8618'
+  ),
   -- 7
-  ('Николай Алексеев', 'vk', 'https://img.freepik.com/free-photo/teenager-having-fun-with-friends_23-2149306182.jpg?w=1380&t=st=1702413602~exp=1702414202~hmac=fb7af710f5683ef06bf07eaea891bdff22e531036097614ce310620fc2ac249e'),
+  (
+    'Николай Алексеев',
+    'vk',
+    'https://img.freepik.com/free-photo/teenager-having-fun-with-friends_23-2149306182.jpg?w=1380&t=st=1702413602~exp=1702414202~hmac=fb7af710f5683ef06bf07eaea891bdff22e531036097614ce310620fc2ac249e'
+  ),
   -- 8
-  ('Павел Федоров', 'tg', 'https://img.freepik.com/free-photo/young-teen-boy-keeping-fist-over-chest-in-checked-shirt-and-looking-confident-front-view_176474-110916.jpg?w=1380&t=st=1702413644~exp=1702414244~hmac=793ccf8107a84fe0ed62c5a36b2c5786a976ab4891b9ec61cdf0496c33cd4416');
+  (
+    'Павел Федоров',
+    'tg',
+    'https://img.freepik.com/free-photo/young-teen-boy-keeping-fist-over-chest-in-checked-shirt-and-looking-confident-front-view_176474-110916.jpg?w=1380&t=st=1702413644~exp=1702414244~hmac=793ccf8107a84fe0ed62c5a36b2c5786a976ab4891b9ec61cdf0496c33cd4416'
+  );
 
 INSERT INTO
   classes (teacherID, title, description, inviteToken)
