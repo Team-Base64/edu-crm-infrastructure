@@ -1,2 +1,7 @@
-# edu-crm-infrastructure
-Contain and deploy configs
+# Docker Compose
+
+Данная ветка хранит конфиг для Docker Compose
+
+---
+
+> Коммит со строкой `[DEPLOY]` в сообщении вызовет workflow для копирования конфига на сервер и его запуска.
