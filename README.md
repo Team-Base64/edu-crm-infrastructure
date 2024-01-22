@@ -1,2 +1,5 @@
-# edu-crm-infrastructure
-Contain and deploy configs
+# Конфиг Nginx
+
+---
+
+> Коммит со строкой `[DEPLOY]` в сообщении вызовет workflow для копирования скриптов на сервер и запуска их в соответсвующих контейнерах.
