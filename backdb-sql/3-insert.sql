@@ -71,6 +71,26 @@ VALUES
     15,
     '71529f3bf1497d78242b940c46bc03a9b4a25ff550c1655a1ffbf7f9a362cb49@group.calendar.google.com'
   );
+  (
+    16,
+    'c3df86ed276c0450dc80fff168f2ae3231a13bcea54701ee8b2be8b6ac4d9863@group.calendar.google.com'
+  ),
+  (
+    17,
+    '5350984e827d8c40b5ed3110502be3bee3be1442bf51478ae1005c56a48e5281@group.calendar.google.com'
+  ),
+  (
+    18,
+    '9f6c4ba6914cc9dfb5b13488bca81c9c6451ebccd5d5a9decc99cdd8b8de0bd2@group.calendar.google.com'
+  ),
+  (
+    19,
+    '63dc4acc9bedc9526b28fce5c78c7cc2180ff6835f7ca3a9d793873364df07fc@group.calendar.google.com'
+  ),
+  (
+    20,
+    '29bad83696ac3edf5fc848528a1907f7df757478c38e0c48e589a96578c6c032@group.calendar.google.com'
+  );
 
 INSERT INTO
   students (name, socialType, avatar)
