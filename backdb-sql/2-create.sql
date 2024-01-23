@@ -2,7 +2,7 @@ CREATE TABLE
     teachers (
         id SERIAL PRIMARY KEY,
         login VARCHAR(50) UNIQUE NOT NULL,
-        password VARCHAR(30),
+        password VARCHAR(56),
         name VARCHAR(100) NOT NULL,
         OAUTH2Token VARCHAR DEFAULT NULL
     );
