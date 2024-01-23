@@ -1,11 +1,11 @@
 INSERT INTO
   teachers (login, name, password)
 VALUES
-  ('test1', 'Фролов Сергей', '12345678'),
+  ('test1', 'Фролов Сергей', 'QmFzZTIwMjSsqo/ZjE//ambEOjexfeuPkhXYEhWDDIPrrbtG6Vtj5Q'),
   (
     'OlgaVasilisk',
     'Ольга Николаевна Васильева',
-    '12345678'
+    'QmFzZTIwMjSsqo/ZjE//ambEOjexfeuPkhXYEhWDDIPrrbtG6Vtj5Q'
   );
 
 INSERT INTO
