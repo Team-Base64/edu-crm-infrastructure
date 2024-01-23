@@ -70,7 +70,7 @@ VALUES
   (
     15,
     '71529f3bf1497d78242b940c46bc03a9b4a25ff550c1655a1ffbf7f9a362cb49@group.calendar.google.com'
-  );
+  ),
   (
     16,
     'c3df86ed276c0450dc80fff168f2ae3231a13bcea54701ee8b2be8b6ac4d9863@group.calendar.google.com'
