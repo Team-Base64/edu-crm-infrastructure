@@ -8,6 +8,7 @@ VALUES
     'QmFzZTIwMjSsqo/ZjE//ambEOjexfeuPkhXYEhWDDIPrrbtG6Vtj5Q'
   );
 
+
 INSERT INTO
   calendars (teacherID, internalApiID)
 VALUES
